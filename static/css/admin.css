@@ -1,0 +1,992 @@
+/* ==============================================================================
+   WORDPRESS ADMIN (WP-ADMIN) STYLESHEET FOR PYTHON SIKHO
+   Chief Mentor: Rohit Sir (Samyak Classes, Kuchaman City)
+   ============================================================================== */
+
+:root {
+    --wp-admin-bg: #f0f0f1;
+    --wp-bar-bg: #1d2327;
+    --wp-menu-bg: #1d2327;
+    --wp-menu-hover: #2c3338;
+    --wp-menu-active: #2271b1;
+    --wp-blue: #2271b1;
+    --wp-blue-hover: #135e96;
+    --wp-blue-focus: #044b85;
+    --wp-card-bg: #ffffff;
+    --wp-card-border: #c3c4c7;
+    --wp-card-border-subtle: #dcdcde;
+    --wp-text-main: #2c3338;
+    --wp-text-muted: #646970;
+    --wp-green: #00a32a;
+    --wp-orange: #dba617;
+    --wp-red: #d63638;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.wp-admin-body {
+    background: var(--wp-admin-bg);
+    color: var(--wp-text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 13px;
+    line-height: 1.4em;
+    min-height: 100vh;
+}
+
+/* ==============================================================================
+   1. WORDPRESS LOGIN GATEWAY
+   ============================================================================== */
+.wp-login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f1;
+    padding: 20px;
+}
+
+.wp-login-box {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.wp-login-logo {
+    margin-bottom: 24px;
+}
+
+.wp-logo-badge {
+    display: inline-block;
+    font-size: 42px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+}
+
+.wp-login-logo h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1d2327;
+}
+
+.wp-login-logo h2 span {
+    color: #2271b1;
+    font-weight: 400;
+}
+
+.wp-login-logo p {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.wp-login-form-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 26px 24px;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.wp-login-footer {
+    margin-top: 20px;
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* ==============================================================================
+   2. WORDPRESS TOP ADMIN BAR (#wpadminbar)
+   ============================================================================== */
+.wp-admin-bar {
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    background: var(--wp-bar-bg);
+    color: #c3c4c7;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.wp-bar-left, .wp-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.wp-bar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wp-bar-link {
+    color: #c3c4c7;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.wp-bar-link:hover, .wp-bar-brand:hover {
+    color: #72aee6;
+}
+
+.wp-bar-dropdown {
+    position: relative;
+}
+
+.wp-bar-menu {
+    display: none;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    background: #2c3338;
+    min-width: 140px;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.wp-bar-dropdown:hover .wp-bar-menu {
+    display: block;
+}
+
+.wp-bar-menu a {
+    display: block;
+    color: #c3c4c7;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.wp-bar-menu a:hover {
+    background: #2271b1;
+    color: #fff;
+}
+
+.wp-bar-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wp-avatar-mini {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #72aee6;
+}
+
+.wp-bar-logout-btn {
+    background: rgba(214, 54, 56, 0.2);
+    border: 1px solid #d63638;
+    color: #fca5a5;
+    padding: 2px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.wp-bar-logout-btn:hover {
+    background: #d63638;
+    color: #fff;
+}
+
+.live-pulse-badge {
+    background: rgba(0, 163, 42, 0.15);
+    border: 1px solid #00a32a;
+    color: #00a32a;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.live-dot {
+    width: 6px;
+    height: 6px;
+    background: #00a32a;
+    border-radius: 50%;
+    animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* ==============================================================================
+   3. WORDPRESS LAYOUT SPLIT (SIDEBAR + CONTENT)
+   ============================================================================== */
+.wp-main-split {
+    display: flex;
+    min-height: calc(100vh - 32px);
+}
+
+.wp-sidebar {
+    width: 200px;
+    background: var(--wp-menu-bg);
+    flex-shrink: 0;
+    padding: 12px 0 60px;
+    user-select: none;
+}
+
+.wp-menu-section-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #64748b;
+    padding: 8px 16px 4px;
+    letter-spacing: 0.5px;
+}
+
+.wp-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 16px;
+    color: #c3c4c7;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    border-left: 4px solid transparent;
+}
+
+.wp-menu-item:hover {
+    background: var(--wp-menu-hover);
+    color: #72aee6;
+}
+
+.wp-menu-item.active {
+    background: #2271b1;
+    color: #fff;
+    font-weight: 700;
+    border-left-color: #72aee6;
+}
+
+.wp-menu-icon {
+    font-size: 15px;
+    margin-right: 8px;
+}
+
+.wp-menu-text {
+    flex-grow: 1;
+}
+
+.wp-menu-badge {
+    background: #475569;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 10px;
+}
+
+.wp-menu-badge.green {
+    background: #00a32a;
+}
+
+.wp-sidebar-footer {
+    padding: 24px 16px 12px;
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.5;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 24px;
+}
+
+.wp-content-area {
+    flex-grow: 1;
+    padding: 20px 24px 80px;
+    max-width: 1400px;
+    overflow-x: hidden;
+}
+
+/* ==============================================================================
+   4. WORDPRESS HEADINGS & WELCOME PANEL
+   ============================================================================== */
+.wp-view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.wp-heading-1 {
+    font-size: 23px;
+    font-weight: 600;
+    color: #1d2327;
+    line-height: 1.3;
+}
+
+.wp-subheading {
+    font-size: 13px;
+    color: var(--wp-text-muted);
+    margin-top: 2px;
+}
+
+.wp-action-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.wp-welcome-panel {
+    background: #fff;
+    border: 1px solid var(--wp-card-border);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.wp-welcome-content h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d2327;
+    margin-bottom: 6px;
+}
+
+.wp-welcome-content p {
+    font-size: 13px;
+    color: var(--wp-text-muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.wp-welcome-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ==============================================================================
+   5. WORDPRESS DASHBOARD CARDS & GRIDS
+   ============================================================================== */
+.wp-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 960px) {
+    .wp-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wp-card {
+    background: #fff;
+    border: 1px solid var(--wp-card-border);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    margin-bottom: 20px;
+}
+
+.wp-card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--wp-card-border-subtle);
+    background: #fafafa;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wp-card-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.wp-card-body {
+    padding: 16px;
+}
+
+.wp-glance-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wp-glance-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #2c3338;
+}
+
+.glance-icon {
+    font-size: 16px;
+    width: 22px;
+}
+
+/* ==============================================================================
+   6. WORDPRESS DATA TABLES (.wp-table)
+   ============================================================================== */
+.wp-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    text-align: left;
+    font-size: 13px;
+}
+
+.wp-table thead th {
+    background: #f6f7f7;
+    color: #2c3338;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--wp-card-border);
+    font-size: 12px;
+}
+
+.wp-table tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--wp-card-border-subtle);
+    color: #2c3338;
+    vertical-align: middle;
+}
+
+.wp-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.wp-table tbody tr:nth-child(even) {
+    background: #fcfcfc;
+}
+
+.wp-toolbar {
+    background: #fff;
+    border: 1px solid var(--wp-card-border);
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ==============================================================================
+   7. WORDPRESS FORMS & BUTTONS
+   ============================================================================== */
+.wp-form-group {
+    margin-bottom: 14px;
+}
+
+.wp-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.wp-form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+    margin-bottom: 4px;
+}
+
+.wp-input-text, .wp-select, .wp-textarea {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #2c3338;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wp-input-text:focus, .wp-select:focus, .wp-textarea:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.wp-textarea {
+    min-height: 140px;
+    line-height: 1.5;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.wp-textarea.code-font {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 12px;
+}
+
+.wp-field-desc {
+    display: block;
+    font-size: 11px;
+    color: var(--wp-text-muted);
+    margin-top: 4px;
+}
+
+.wp-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+@media (max-width: 768px) {
+    .wp-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+}
+
+.wp-button-primary {
+    background: var(--wp-blue);
+    border-color: var(--wp-blue);
+    color: #fff;
+}
+
+.wp-button-primary:hover {
+    background: var(--wp-blue-hover);
+    border-color: var(--wp-blue-hover);
+    color: #fff;
+}
+
+.wp-button-secondary {
+    background: #f6f7f7;
+    border-color: #dcdcde;
+    color: #2271b1;
+}
+
+.wp-button-secondary:hover {
+    background: #f0f0f1;
+    border-color: #0a4b78;
+    color: #0a4b78;
+}
+
+.wp-button-hero {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.wp-button-small {
+    padding: 3px 8px;
+    font-size: 11px;
+}
+
+.wp-button-delete {
+    background: #fbeaea;
+    border-color: #d63638;
+    color: #d63638;
+}
+
+.wp-button-delete:hover {
+    background: #d63638;
+    color: #fff;
+}
+
+/* ==============================================================================
+   8. YOAST / RANKMATH STYLE SEO SUITE
+   ============================================================================== */
+.wp-seo-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .wp-seo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wp-snippet-toggle {
+    display: flex;
+    background: #e2e8f0;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.btn-snippet-mode {
+    background: transparent;
+    border: none;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-snippet-mode.active {
+    background: #fff;
+    color: #0f172a;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Google SERP Card Simulator */
+.google-serp-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    font-family: arial, sans-serif;
+}
+
+.google-serp-card.mobile {
+    max-width: 380px;
+    margin: 0 auto;
+    border: 1.5px solid #cbd5e1;
+}
+
+.serp-site-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.serp-favicon {
+    font-size: 18px;
+}
+
+.serp-sitename {
+    font-size: 12px;
+    color: #202124;
+    font-weight: 500;
+}
+
+.serp-url {
+    font-size: 11px;
+    color: #4d5156;
+    display: block;
+    word-break: break-all;
+}
+
+.serp-title {
+    font-size: 18px;
+    color: #1a0dab;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.serp-title:hover {
+    text-decoration: underline;
+}
+
+.serp-desc {
+    font-size: 13px;
+    color: #4d5156;
+    line-height: 1.45;
+}
+
+.serp-help-text {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Length Progress Bars */
+.wp-counter-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.wp-progress-bar-track {
+    width: 100%;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.wp-progress-bar-fill {
+    height: 100%;
+    transition: width 0.2s ease, background 0.2s ease;
+}
+
+.wp-progress-bar-fill.green { background: #00a32a; }
+.wp-progress-bar-fill.orange { background: #dba617; }
+.wp-progress-bar-fill.red { background: #d63638; }
+
+.wp-score-pill {
+    background: #f0fdf4;
+    border: 1px solid #00a32a;
+    color: #00a32a;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.yoast-audit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.audit-item {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.audit-bullet.green { color: #00a32a; font-size: 16px; }
+.audit-bullet.orange { color: #dba617; font-size: 16px; }
+.audit-bullet.red { color: #d63638; font-size: 16px; }
+
+.wp-tool-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.schema-code-box {
+    background: #1e293b;
+    color: #38bdf8;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 11px;
+    overflow-x: auto;
+}
+
+/* ==============================================================================
+   9. GUTENBERG / NOTES SPLIT EDITOR
+   ============================================================================== */
+.wp-editor-split-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.wp-editor-split-box.split {
+    grid-template-columns: 1fr 1fr;
+}
+
+.wp-preview-pane {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+/* ==============================================================================
+   10. MODALS & TOASTS
+   ============================================================================== */
+.wp-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.wp-modal-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: wpModalPop 0.2s ease-out;
+}
+
+@keyframes wpModalPop {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.wp-modal-header {
+    padding: 12px 18px;
+    border-bottom: 1px solid #dcdcde;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wp-modal-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.wp-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.wp-modal-body {
+    padding: 18px;
+}
+
+.wp-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #1d2327;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 1000000;
+    animation: slideUpToast 0.3s ease;
+}
+
+@keyframes slideUpToast {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.wp-tab-view {
+    display: none;
+    animation: fadeInTab 0.2s ease;
+}
+
+.wp-tab-view.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.wp-footer {
+    border-top: 1px solid #dcdcde;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #64748b;
+    background: #f0f0f1;
+}
+
+.wp-footer a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+/* ==============================================================================
+   11. SUBSCRIPTIONS & VIP BADGES
+   ============================================================================== */
+.wp-badge-vip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+    border: 1px solid #f59e0b;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.wp-badge-pending {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fcd34d;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.wp-badge-demo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.wp-stat-card {
+    padding: 16px 20px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.wp-stat-card .stat-number {
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.wp-stat-card .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}

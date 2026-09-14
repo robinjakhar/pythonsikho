@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Dashboard ‹ Python Sikho — Chief Mentor: Rohit Sir</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}?v=5.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="wp-admin-body">
+
+    <!-- ========================================================================= -->
+    <!-- 1. WORDPRESS LOGIN GATEWAY (SHOWN IF NOT AUTHENTICATED) -->
+    <!-- ========================================================================= -->
+    <div id="wp-login-screen" class="wp-login-wrapper" style="display: flex;">
+        <div class="wp-login-box">
+            <div class="wp-login-logo">
+                <span class="wp-logo-badge">🐍</span>
+                <h2>WordPress <span>• Python Sikho</span></h2>
+                <p>Chief Mentor: <strong>Rohit Sir</strong> (Samyak Classes, Kuchaman City • 📞 9509934266)</p>
+            </div>
+
+            <div class="wp-login-form-card">
+                <div id="wp-login-error" class="wp-notice wp-notice-error" style="display: none;">
+                    <p>❌ <strong>ERROR:</strong> Invalid Mentor Master PIN. Please try again.</p>
+                </div>
+
+                <label for="wp-input-pin" class="wp-form-label">🔑 Master Admin PIN / Password:</label>
+                <div class="wp-input-group">
+                    <input type="password" id="wp-input-pin" class="wp-input-text" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter') handleWpLogin()">
+                    <button type="button" class="wp-toggle-eye" onclick="toggleWpPinEye('wp-input-pin')" title="Show/Hide PIN">👁️</button>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin: 14px 0;">
+                    <label style="font-size: 12px; color: #64748b; cursor: pointer;">
+                        <input type="checkbox" id="wp-remember-me" checked> Remember Session
+                    </label>
+                    <a href="/" style="font-size: 12px; color: #2271b1; text-decoration: none;">← Back to Website</a>
+                </div>
+
+                <button class="wp-button wp-button-primary wp-button-hero" onclick="handleWpLogin()" id="btn-wp-login">
+                    Log In to WordPress Dashboard →
+                </button>
+            </div>
+
+            <div class="wp-login-footer">
+                <span>🛡️ 256-Bit SSL Encrypted WP Gate • Samyak Computer Classes</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 2. AUTHENTICATED WORDPRESS DASHBOARD APPLICATION -->
+    <!-- ========================================================================= -->
+    <div id="wp-app-container" class="wp-app-layout" style="display: none;">
+
+        <!-- 2.1 WORDPRESS TOP ADMIN BAR -->
+        <header id="wpadminbar" class="wp-admin-bar">
+            <div class="wp-bar-left">
+                <a href="/wp-admin" class="wp-bar-brand" title="Python Sikho WordPress Dashboard">
+                    <span class="wp-bar-icon">🐍</span>
+                    <span class="wp-bar-site-name">Python Sikho WP</span>
+                </a>
+                <a href="/" target="_blank" class="wp-bar-link" title="Visit Public Learning Portal">
+                    <span>🏠</span> Visit Website
+                </a>
+                <div class="wp-bar-dropdown">
+                    <span class="wp-bar-link">➕ New ▾</span>
+                    <div class="wp-bar-menu">
+                        <a href="javascript:void(0)" onclick="switchWpView('topics'); openAddTopicModal();">📚 New Topic</a>
+                        <a href="javascript:void(0)" onclick="switchWpView('notices');">📢 New Notice</a>
+                        <a href="javascript:void(0)" onclick="switchWpView('quizzes');">❓ New Quiz MCQ</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wp-bar-right">
+                <span class="wp-bar-item live-pulse-badge">
+                    <span class="live-dot"></span> LIVE TUNNEL READY
+                </span>
+                <div class="wp-bar-user">
+                    <span>Howdy, <strong>Rohit Sir</strong> 👑</span>
+                    <img src="{{ url_for('static', filename='uploads/rohit_sir.png') }}" alt="Rohit Sir" class="wp-avatar-mini">
+                    <button class="wp-bar-logout-btn" onclick="handleWpLogout()" title="Lock WP-Admin Dashboard">🔒 Log Out</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="wp-main-split">
+            <!-- 2.2 WORDPRESS LEFT SIDEBAR MENU -->
+            <nav id="adminmenu" class="wp-sidebar">
+                <div class="wp-menu-section-label">CORE WORDPRESS</div>
+                
+                <a href="javascript:void(0)" class="wp-menu-item active" id="menu-item-dashboard" onclick="switchWpView('dashboard')">
+                    <span class="wp-menu-icon">📌</span>
+                    <span class="wp-menu-text">Dashboard</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-students" onclick="switchWpView('students')">
+                    <span class="wp-menu-icon">👥</span>
+                    <span class="wp-menu-text">Students / Users</span>
+                    <span class="wp-menu-badge" id="sidebar-student-count">0</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-payments" onclick="switchWpView('payments')">
+                    <span class="wp-menu-icon">💳</span>
+                    <span class="wp-menu-text">Subscriptions & Payments</span>
+                    <span class="wp-menu-badge gold" id="sidebar-pending-payments-count">0</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-leads" onclick="switchWpView('leads')">
+                    <span class="wp-menu-icon">🎯</span>
+                    <span class="wp-menu-text">Leads & Admissions</span>
+                    <span class="wp-menu-badge" style="background: #ec4899; color: #fff;" id="sidebar-leads-count">0</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-topics" onclick="switchWpView('topics')">
+                    <span class="wp-menu-icon">📚</span>
+                    <span class="wp-menu-text">Curriculum Topics</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-notes" onclick="switchWpView('notes')">
+                    <span class="wp-menu-icon">📝</span>
+                    <span class="wp-menu-text">Notes Studio (CMS)</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-practice" onclick="switchWpView('practice')">
+                    <span class="wp-menu-icon">💻</span>
+                    <span class="wp-menu-text">Practice Tasks</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-quizzes" onclick="switchWpView('quizzes')">
+                    <span class="wp-menu-icon">❓</span>
+                    <span class="wp-menu-text">Quizzes & MCQs</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-projects" onclick="switchWpView('projects')">
+                    <span class="wp-menu-icon">🚀</span>
+                    <span class="wp-menu-text">Capstone Projects</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-notices" onclick="switchWpView('notices')">
+                    <span class="wp-menu-icon">📢</span>
+                    <span class="wp-menu-text">Broadcast Notices</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-blogs" onclick="switchWpView('blogs')">
+                    <span class="wp-menu-icon">📰</span>
+                    <span class="wp-menu-text">Blog & SEO Articles</span>
+                    <span class="wp-menu-badge" style="background: #fbbf24; color: #000;" id="sidebar-blog-count">5</span>
+                </a>
+
+                <div class="wp-menu-section-label" style="margin-top: 14px;">SETTINGS & OPTIMIZATION</div>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-appearance" onclick="switchWpView('appearance')">
+                    <span class="wp-menu-icon">🎨</span>
+                    <span class="wp-menu-text">Appearance / Identity</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-seo" onclick="switchWpView('seo')">
+                    <span class="wp-menu-icon">🔍</span>
+                    <span class="wp-menu-text">Yoast SEO Suite</span>
+                    <span class="wp-menu-badge green">SEO 100%</span>
+                </a>
+
+                <a href="javascript:void(0)" class="wp-menu-item" id="menu-item-settings" onclick="switchWpView('settings')">
+                    <span class="wp-menu-icon">⚙️</span>
+                    <span class="wp-menu-text">Security & PIN</span>
+                </a>
+
+                <div class="wp-sidebar-footer">
+                    <span>WordPress 6.6.2 Running</span><br>
+                    <span style="color: #64748b;">Python 3.11 + SQLite3</span>
+                </div>
+            </nav>
+
+            <!-- 2.3 WORDPRESS MAIN CONTENT WRAPPER -->
+            <main id="wpcontent" class="wp-content-area">
+                
+                <!-- Global Floating Toast Notification -->
+                <div id="wp-toast" class="wp-toast" style="display: none;"></div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 1: DASHBOARD OVERVIEW -->
+                <!-- ============================================================= -->
+                <div id="wp-view-dashboard" class="wp-tab-view active">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Dashboard</h1>
+                            <p class="wp-subheading">Welcome to your WordPress Command Center, Chief Mentor Rohit Sir!</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <a href="/" target="_blank" class="wp-button wp-button-secondary">🌐 Preview Website</a>
+                            <button class="wp-button wp-button-primary" onclick="exportStudentsCSV()">📥 Download Excel/CSV</button>
+                        </div>
+                    </div>
+
+                    <!-- WordPress Welcome Banner -->
+                    <div class="wp-welcome-panel">
+                        <div class="wp-welcome-content">
+                            <h2>🐍 Welcome to Python Sikho Academy Administration!</h2>
+                            <p>Here you can control all 12 Curriculum Topics, Smart Notes, Quizzes, Practice Tasks, Live Broadcast Notices, and Google SEO Rankings.</p>
+                            <div class="wp-welcome-actions">
+                                <button class="wp-button wp-button-primary" onclick="switchWpView('seo')">🚀 Optimize SEO for Google</button>
+                                <button class="wp-button wp-button-secondary" onclick="switchWpView('students')">👥 Manage Enrolled Students</button>
+                                <button class="wp-button wp-button-secondary" onclick="switchWpView('notices')">📢 Post Urgent Notice</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WordPress At a Glance & Metrics Widgets -->
+                    <div class="wp-dashboard-grid">
+                        
+                        <!-- Widget 1: At a Glance -->
+                        <div class="wp-card">
+                            <div class="wp-card-header">
+                                <h3>📊 At a Glance</h3>
+                            </div>
+                            <div class="wp-card-body">
+                                <ul class="wp-glance-list">
+                                    <li><span class="glance-icon">👥</span> <strong id="dash-total-students">0</strong> Students Enrolled</li>
+                                    <li><span class="glance-icon">📚</span> <strong id="dash-total-topics">12</strong> Topics Modules Published</li>
+                                    <li><span class="glance-icon">⚡</span> <strong id="dash-total-xp">0</strong> Total XP Points Distributed</li>
+                                    <li><span class="glance-icon">❓</span> <strong id="dash-quizzes-taken">0</strong> Quizzes Attempted (<span id="dash-pass-rate">100</span>% Pass Rate)</li>
+                                    <li><span class="glance-icon">📢</span> <strong id="dash-active-notices">1</strong> Live Portal Broadcast Active</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Widget 2: Quick Notice Draft -->
+                        <div class="wp-card">
+                            <div class="wp-card-header">
+                                <h3>📢 Quick Portal Notice Draft</h3>
+                            </div>
+                            <div class="wp-card-body">
+                                <input type="text" id="dash-quick-notice" class="wp-input-text" placeholder="What's happening? (e.g. कल दोपहर 2 बजे स्पेशल टेस्ट है)" style="margin-bottom: 10px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <select id="dash-quick-type" class="wp-select" style="max-width: 180px;">
+                                        <option value="test">📝 Test Alert</option>
+                                        <option value="urgent">🔴 Urgent</option>
+                                        <option value="general" selected>📢 General Notice</option>
+                                        <option value="holiday">🎉 Holiday / Schedule</option>
+                                    </select>
+                                    <button class="wp-button wp-button-primary" onclick="publishQuickNotice()">Broadcast Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Widget 3: Recent Students Registrations -->
+                        <div class="wp-card" style="grid-column: 1 / -1;">
+                            <div class="wp-card-header">
+                                <h3>⚡ Recent Student Registrations</h3>
+                                <button class="wp-button wp-button-secondary wp-button-small" onclick="switchWpView('students')">View All →</button>
+                            </div>
+                            <div class="wp-card-body" style="padding: 0;">
+                                <table class="wp-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Student Name</th>
+                                            <th>Phone Number</th>
+                                            <th>City</th>
+                                            <th>XP Points</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dash-recent-students-tbody">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Widget 4: Real-time OTP Logs & Security Monitor -->
+                        <div class="wp-card" style="grid-column: 1 / -1; border-top: 3px solid #2271b1;">
+                            <div class="wp-card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                <h3>🔴 Live OTP & Student Verification Monitor (लाइव ओटीपी लॉग्स)</h3>
+                                <button class="wp-button wp-button-secondary wp-button-small" onclick="loadWpOtpLogs()">🔄 Refresh OTPs</button>
+                            </div>
+                            <div class="wp-card-body" style="padding: 0;">
+                                <table class="wp-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Mobile Number</th>
+                                            <th>Generated OTP</th>
+                                            <th>Delivery Route</th>
+                                            <th>Status</th>
+                                            <th>Requested Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dash-live-otp-tbody">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 2: STUDENTS / USERS MASTER -->
+                <!-- ============================================================= -->
+                <div id="wp-view-students" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Students / Users</h1>
+                            <p class="wp-subheading">Manage all enrolled students, adjust XP points, edit locations, and export data.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-secondary" onclick="loadWpStudents()">🔄 Refresh</button>
+                            <button class="wp-button wp-button-primary" onclick="exportStudentsCSV()">📥 Export Excel / CSV</button>
+                        </div>
+                    </div>
+
+                    <!-- WP Filter & Search Bar -->
+                    <div class="wp-toolbar">
+                        <div class="wp-toolbar-left">
+                            <input type="text" id="wp-student-search" class="wp-input-text" placeholder="Search by name, phone, city..." oninput="filterWpStudents()" style="width: 260px;">
+                        </div>
+                        <div class="wp-toolbar-right">
+                            <span id="wp-student-total-label" style="font-size: 12px; color: #64748b;">Showing all registered students</span>
+                        </div>
+                    </div>
+
+                    <!-- Students Data Table -->
+                    <div class="wp-card" style="padding: 0; overflow-x: auto;">
+                        <table class="wp-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student Name</th>
+                                    <th>Mobile Number</th>
+                                    <th>City / Town</th>
+                                    <th>Course Access</th>
+                                    <th>Payment UTR</th>
+                                    <th>XP Points</th>
+                                    <th>Streak</th>
+                                    <th>Joined Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wp-students-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 2.5: SUBSCRIPTIONS & PAYMENTS MANAGER (₹299) -->
+                <!-- ============================================================= -->
+                <div id="wp-view-payments" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">💳 Subscriptions & Payments Manager</h1>
+                            <p class="wp-subheading">Track student ₹299 course payments, verify UPI UTR numbers, and manage VIP unlocks.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-secondary" onclick="loadWpPayments()">🔄 Refresh</button>
+                            <button class="wp-button wp-button-primary" onclick="openGrantVipModal()">⚡ Direct VIP Grant</button>
+                        </div>
+                    </div>
+
+                    <!-- Receiver UPI Alert Strip -->
+                    <div class="wp-notice wp-notice-info" style="display: flex; justify-content: space-between; align-items: center; background: #f0fdf4; border-color: #22c55e;">
+                        <div style="font-size: 13px; color: #15803d;">
+                            📱 <strong>Active UPI Payment Receiver:</strong> <span style="font-family: monospace; font-size: 14px; font-weight: 800; color: #0f172a;">7627060647</span> 
+                            • <strong>UPI ID:</strong> <span style="font-family: monospace; font-weight: 700;">7627060647@ybl</span>
+                            • <strong>Course Fee:</strong> <span style="font-weight: 800; color: #b45309;">₹299 (Lifetime Access)</span>
+                            • <strong>Payee:</strong> RAJU RAM (Rohit Sir)
+                        </div>
+                        <button class="wp-button wp-button-secondary wp-button-small" onclick="switchWpView('appearance')">⚙️ Change Details</button>
+                    </div>
+
+                    <!-- 4 Summary Stats Cards -->
+                    <div class="wp-dashboard-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 14px; margin-bottom: 14px;">
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #10b981;">
+                            <div class="stat-number" id="pay-total-revenue" style="color: #10b981; font-size: 26px; font-weight: 900;">₹0</div>
+                            <div class="stat-label">💰 Total Revenue Earned</div>
+                        </div>
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #f59e0b;">
+                            <div class="stat-number" id="pay-pending-count" style="color: #f59e0b; font-size: 26px; font-weight: 900;">0</div>
+                            <div class="stat-label">⏳ Pending Approvals</div>
+                        </div>
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #3b82f6;">
+                            <div class="stat-number" id="pay-vip-count" style="color: #3b82f6; font-size: 26px; font-weight: 900;">0</div>
+                            <div class="stat-label">👑 VIP Enrolled Students</div>
+                        </div>
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #64748b;">
+                            <div class="stat-number" id="pay-demo-count" style="color: #64748b; font-size: 26px; font-weight: 900;">0</div>
+                            <div class="stat-label">🆓 Free Demo Students (Topic 1)</div>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar & Filter -->
+                    <div class="wp-toolbar">
+                        <div class="wp-toolbar-left">
+                            <input type="text" id="wp-payment-search" class="wp-input-text" placeholder="Search by student name, phone, UTR..." oninput="filterWpPayments()" style="width: 280px;">
+                            <select id="wp-payment-status-filter" class="wp-select" onchange="filterWpPayments()" style="max-width: 160px;">
+                                <option value="all">All Statuses</option>
+                                <option value="pending" selected>⏳ Pending Only</option>
+                                <option value="approved">✅ Approved Only</option>
+                                <option value="rejected">❌ Rejected</option>
+                            </select>
+                        </div>
+                        <div class="wp-toolbar-right">
+                            <span id="wp-payment-total-label" style="font-size: 12px; color: #64748b;">Showing all payments</span>
+                        </div>
+                    </div>
+
+                    <!-- Payments Data Table -->
+                    <div class="wp-card" style="padding: 0; overflow-x: auto;">
+                        <table class="wp-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student</th>
+                                    <th>Phone / City</th>
+                                    <th>Amount</th>
+                                    <th>UPI Ref / UTR</th>
+                                    <th>Payment Receipt / Slip</th>
+                                    <th>Submitted Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wp-payments-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 3: CURRICULUM TOPICS CMS -->
+                <!-- ============================================================= -->
+                <div id="wp-view-topics" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Curriculum Topics</h1>
+                            <p class="wp-subheading">Create, edit, or remove Python learning modules from the 12-topic curriculum.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-primary" onclick="openAddTopicModal()">➕ Add New Topic</button>
+                        </div>
+                    </div>
+
+                    <div class="wp-card" style="padding: 0; overflow-x: auto;">
+                        <table class="wp-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Topic Title</th>
+                                    <th>Description / Hindi Overview</th>
+                                    <th>XP Reward</th>
+                                    <th>Est. Duration</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wp-topics-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 4: SMART NOTES STUDIO (GUTENBERG / CLASSIC CMS) -->
+                <!-- ============================================================= -->
+                <div id="wp-view-notes" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Smart Notes Content Studio</h1>
+                            <p class="wp-subheading">Write rich comprehensive markdown notes with code examples and Hindi explanations.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-primary" onclick="saveWpNotes()">💾 Update & Publish Notes</button>
+                        </div>
+                    </div>
+
+                    <div class="wp-toolbar">
+                        <label style="font-weight: 700; font-size: 13px; color: #1e293b;">Select Topic to Edit:</label>
+                        <select id="wp-notes-topic-select" class="wp-select" style="max-width: 380px;" onchange="loadWpTopicNotes(this.value)">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="wp-card">
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Topic Title:</label>
+                            <input type="text" id="wp-notes-title-input" class="wp-input-text" placeholder="Topic Title">
+                        </div>
+
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Topic Subtitle / Hindi Summary:</label>
+                            <input type="text" id="wp-notes-desc-input" class="wp-input-text" placeholder="Short description of this topic">
+                        </div>
+
+                        <div class="wp-form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <label class="wp-form-label" style="margin: 0;">Markdown Content & Python Code Examples:</label>
+                                <button type="button" class="wp-button wp-button-secondary wp-button-small" onclick="toggleNotesPreview()">👁️ Toggle Live Preview</button>
+                            </div>
+                            <div id="wp-notes-editor-split" class="wp-editor-split-box">
+                                <textarea id="wp-notes-markdown-input" class="wp-textarea" placeholder="Write in Markdown with code blocks: ```python ... ```" oninput="updateNotesLivePreview()"></textarea>
+                                <div id="wp-notes-preview-pane" class="wp-preview-pane" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 5: PRACTICE TASKS STUDIO -->
+                <!-- ============================================================= -->
+                <div id="wp-view-practice" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">In-Browser Practice Tasks</h1>
+                            <p class="wp-subheading">Configure interactive coding challenges, starter code, and expected terminal output.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-primary" onclick="saveWpPracticeTask()">💾 Save Practice Task</button>
+                        </div>
+                    </div>
+
+                    <div class="wp-toolbar">
+                        <label style="font-weight: 700; font-size: 13px; color: #1e293b;">Select Topic:</label>
+                        <select id="wp-practice-topic-select" class="wp-select" style="max-width: 380px;" onchange="loadWpPracticeTask(this.value)">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="wp-card">
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Task Problem Title:</label>
+                            <input type="text" id="wp-pt-title" class="wp-input-text" placeholder="Task Title">
+                        </div>
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Task Instructions (Problem Statement):</label>
+                            <textarea id="wp-pt-instructions" class="wp-textarea" style="min-height: 80px;" placeholder="Describe what the student should write..."></textarea>
+                        </div>
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Starter Code for Student Editor:</label>
+                            <textarea id="wp-pt-starter-code" class="wp-textarea code-font" style="min-height: 120px;" placeholder="# Starter code here..."></textarea>
+                        </div>
+                        <div class="wp-form-grid">
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Expected Output:</label>
+                                <input type="text" id="wp-pt-expected-output" class="wp-input-text" placeholder="Expected string in console output">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Hint for Student:</label>
+                                <input type="text" id="wp-pt-hint" class="wp-input-text" placeholder="Helpful hint for solving this task">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 6: QUIZZES & MCQS STUDIO -->
+                <!-- ============================================================= -->
+                <div id="wp-view-quizzes" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Quizzes & Question Bank</h1>
+                            <p class="wp-subheading">Manage multiple choice questions, passing scores, correct keys, and explanations.</p>
+                        </div>
+                    </div>
+
+                    <div class="wp-toolbar">
+                        <label style="font-weight: 700; font-size: 13px; color: #1e293b;">Select Topic Quiz:</label>
+                        <select id="wp-quiz-topic-select" class="wp-select" style="max-width: 380px;" onchange="loadWpQuizQuestions(this.value)">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="wp-dashboard-grid">
+                        <!-- Questions List -->
+                        <div class="wp-card" style="grid-column: 1 / span 1;">
+                            <div class="wp-card-header">
+                                <h3>📋 Existing Quiz Questions</h3>
+                            </div>
+                            <div class="wp-card-body" id="wp-quiz-questions-list">
+                                <!-- Dynamically populated -->
+                            </div>
+                        </div>
+
+                        <!-- Add New Question Form -->
+                        <div class="wp-card" style="grid-column: 2 / span 1;">
+                            <div class="wp-card-header">
+                                <h3>➕ Add New MCQ Question</h3>
+                            </div>
+                            <div class="wp-card-body">
+                                <div class="wp-form-group">
+                                    <label class="wp-form-label">Question Text (प्रश्न):</label>
+                                    <input type="text" id="wp-new-q-text" class="wp-input-text" placeholder="उदा. Python में floor division के लिए कौन सा ऑपरेटर प्रयोग होता है?">
+                                </div>
+                                <div class="wp-form-grid" style="gap: 8px;">
+                                    <div>
+                                        <label class="wp-form-label">Option A:</label>
+                                        <input type="text" id="wp-new-q-a" class="wp-input-text" placeholder="Option A">
+                                    </div>
+                                    <div>
+                                        <label class="wp-form-label">Option B:</label>
+                                        <input type="text" id="wp-new-q-b" class="wp-input-text" placeholder="Option B">
+                                    </div>
+                                    <div>
+                                        <label class="wp-form-label">Option C:</label>
+                                        <input type="text" id="wp-new-q-c" class="wp-input-text" placeholder="Option C">
+                                    </div>
+                                    <div>
+                                        <label class="wp-form-label">Option D:</label>
+                                        <input type="text" id="wp-new-q-d" class="wp-input-text" placeholder="Option D">
+                                    </div>
+                                </div>
+                                <div class="wp-form-grid" style="margin-top: 10px;">
+                                    <div>
+                                        <label class="wp-form-label">Correct Option:</label>
+                                        <select id="wp-new-q-correct" class="wp-select">
+                                            <option value="A">Option A</option>
+                                            <option value="B">Option B</option>
+                                            <option value="C">Option C</option>
+                                            <option value="D">Option D</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="wp-form-label">Explanation (स्पष्टीकरण):</label>
+                                        <input type="text" id="wp-new-q-expl" class="wp-input-text" placeholder="उदा. // ऑपरेटर floor division करता है">
+                                    </div>
+                                </div>
+                                <button class="wp-button wp-button-primary" onclick="addWpQuizQuestion()" style="margin-top: 14px; width: 100%;">
+                                    ➕ Save & Add to Quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 7: CAPSTONE PROJECTS -->
+                <!-- ============================================================= -->
+                <div id="wp-view-projects" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Capstone Projects</h1>
+                            <p class="wp-subheading">Production project scenarios and downloadable student starter kits.</p>
+                        </div>
+                    </div>
+
+                    <div class="wp-card">
+                        <p style="font-size: 13px; color: #475569;">
+                            The curriculum currently includes full-stack capstone projects (Automated WhatsApp Billing Bot, Student Result Analytics System, Web Scraping Engine). All downloadable starter .zip packages are served via <code>/api/projects/&lt;id&gt;/download</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 8: BROADCAST NOTICES BOARD -->
+                <!-- ============================================================= -->
+                <div id="wp-view-notices" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Broadcast Notices Board</h1>
+                            <p class="wp-subheading">Publish live urgent notices, test announcements, and holiday schedules to the website notice board.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <a href="/#notices-section" target="_blank" class="wp-button wp-button-secondary" style="text-decoration: none;">🌐 View Live on Website ↗</a>
+                        </div>
+                    </div>
+
+                    <!-- Create Notice Card -->
+                    <div class="wp-card">
+                        <div class="wp-card-header">
+                            <h3>📢 Broadcast a New Portal Notice</h3>
+                        </div>
+                        <div class="wp-card-body">
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Notice Message:</label>
+                                <input type="text" id="wp-notice-msg-input" class="wp-input-text" placeholder="उदा. कल दोपहर 2:00 बजे Python Functions का लाइव टेस्ट होगा!">
+                            </div>
+                            <div class="wp-form-grid">
+                                <div class="wp-form-group">
+                                    <label class="wp-form-label">Notice Category:</label>
+                                    <select id="wp-notice-type-input" class="wp-select">
+                                        <option value="test">📝 Test / Exam Announcement</option>
+                                        <option value="urgent">🔴 Urgent / Important Alert</option>
+                                        <option value="general" selected>📢 General Batch Notice</option>
+                                        <option value="holiday">🎉 Holiday / Schedule Update</option>
+                                    </select>
+                                </div>
+                                <div class="wp-form-group" style="display: flex; align-items: center; padding-top: 24px;">
+                                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer;">
+                                        <input type="checkbox" id="wp-notice-active-input" checked> Make Active Immediately on Portal
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="wp-button wp-button-primary" onclick="saveWpNotice()" style="margin-top: 10px;">
+                                📢 Publish Notice Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Notices History Table -->
+                    <div class="wp-card" style="margin-top: 20px; padding: 0; overflow-x: auto;">
+                        <table class="wp-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                    <th>Notice Message</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wp-notices-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 9: APPEARANCE & SITE IDENTITY -->
+                <!-- ============================================================= -->
+                <div id="wp-view-appearance" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Appearance & Site Identity</h1>
+                            <p class="wp-subheading">Customize Academy branding, Rohit Sir's contact info, batch timings, and hero texts.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-primary" onclick="saveWpBrandingSettings()">💾 Save Site Identity</button>
+                        </div>
+                    </div>
+
+                    <div class="wp-card">
+                        <div class="wp-form-grid">
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Institute / Academy Name:</label>
+                                <input type="text" id="set-institute-name" class="wp-input-text" value="Samyak Computer Classes">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">City / Location:</label>
+                                <input type="text" id="set-institute-city" class="wp-input-text" value="Kuchaman City">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Chief Mentor Name:</label>
+                                <input type="text" id="set-mentor-name" class="wp-input-text" value="Rohit Sir">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Mentor Helpline Phone:</label>
+                                <input type="text" id="set-mentor-phone" class="wp-input-text" value="9509934266">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">WhatsApp Helpline Number:</label>
+                                <input type="text" id="set-mentor-whatsapp" class="wp-input-text" value="9509934266">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Daily Live Batch Schedule:</label>
+                                <input type="text" id="set-batch-timing" class="wp-input-text" value="02:00 PM">
+                            </div>
+                        </div>
+
+                        <div class="wp-form-group" style="margin-top: 10px;">
+                            <label class="wp-form-label">Hero Headline Title (English):</label>
+                            <input type="text" id="set-hero-title" class="wp-input-text" value="Master Python 3 from Zero to Pro">
+                        </div>
+
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Hero Subtitle (Hindi):</label>
+                            <input type="text" id="set-hero-hindi-sub" class="wp-input-text" value="आसान हिंदी में पाइथन सीखें">
+                        </div>
+
+                        <div class="wp-form-group">
+                            <label class="wp-form-label">Welcome Bonus XP for New Students:</label>
+                            <input type="number" id="set-welcome-bonus-xp" class="wp-input-text" value="100" style="max-width: 150px;">
+                        </div>
+
+                        <div class="wp-menu-section-label" style="margin: 20px 0 10px; color: #1e293b; font-weight: 800; border-top: 1px solid #e2e8f0; padding-top: 16px;">💳 COURSE SUBSCRIPTION & UPI PAYMENT CONFIG</div>
+                        <div class="wp-form-grid">
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Course Offer Price (₹):</label>
+                                <input type="number" id="set-course-price" class="wp-input-text" value="299">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Course Original M.R.P. (₹):</label>
+                                <input type="number" id="set-course-mrp" class="wp-input-text" value="999">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Payment Receiver UPI Mobile No:</label>
+                                <input type="text" id="set-payment-phone" class="wp-input-text" value="7627060647">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">UPI ID Address:</label>
+                                <input type="text" id="set-payment-upi-id" class="wp-input-text" value="7627060647@ybl">
+                            </div>
+                            <div class="wp-form-group" style="grid-column: 1 / -1;">
+                                <label class="wp-form-label">Payment Receiver Payee Name:</label>
+                                <input type="text" id="set-payment-receiver-name" class="wp-input-text" value="RAJU RAM (Rohit Sir)">
+                            </div>
+                        </div>
+
+                        <div class="wp-menu-section-label" style="margin: 20px 0 10px; color: #1e293b; font-weight: 800; border-top: 1px solid #e2e8f0; padding-top: 16px;">📱 SMS GATEWAY & REAL OTP AUTH CONFIG (फ़ेक लॉगिन रोकथाम)</div>
+                        <div class="wp-form-grid">
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">SMS Gateway Provider:</label>
+                                <select id="set-sms-provider" class="wp-select">
+                                    <option value="fast2sms" selected>Fast2SMS (Quick OTP API)</option>
+                                    <option value="2factor">2Factor.in SMS Gateway</option>
+                                    <option value="whatsapp_direct">WhatsApp Direct Verification</option>
+                                </select>
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">SMS Gateway API Key:</label>
+                                <input type="text" id="set-sms-api-key" class="wp-input-text" placeholder="e.g. Fast2SMS API Key (Leave empty to log OTP in Admin DB)">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">SMS Sender ID:</label>
+                                <input type="text" id="set-sms-sender-id" class="wp-input-text" value="PYSIKH">
+                            </div>
+                            <div class="wp-form-group">
+                                <label class="wp-form-label">Auth Security Mode:</label>
+                                <select id="set-auth-mode" class="wp-select">
+                                    <option value="strict_otp" selected>🔒 Strict Real OTP (100% Genuine Mobile Only)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 10: YOAST / RANKMATH STYLE SEO SUITE -->
+                <!-- ============================================================= -->
+                <div id="wp-view-seo" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">🔍 Yoast / RankMath Style SEO Suite</h1>
+                            <p class="wp-subheading">Fine-tune Search Engine Optimization, Meta Tags, Google SERP Snippets, and XML Sitemaps.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-primary" onclick="saveWpSeoSettings()">💾 Save SEO Meta Tags</button>
+                        </div>
+                    </div>
+
+                    <!-- SEO Dashboard Grid -->
+                    <div class="wp-seo-grid">
+                        
+                        <!-- Left Col: SEO Inputs & Google Snippet Simulator -->
+                        <div class="wp-seo-left">
+                            
+                            <!-- 1. LIVE GOOGLE SEARCH SNIPPET PREVIEW (SERP SIMULATOR) -->
+                            <div class="wp-card">
+                                <div class="wp-card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <h3>🌐 Google Search Snippet Preview</h3>
+                                    <div class="wp-snippet-toggle">
+                                        <button type="button" class="btn-snippet-mode active" id="btn-serp-mobile" onclick="setSerpMode('mobile')">📱 Mobile</button>
+                                        <button type="button" class="btn-snippet-mode" id="btn-serp-desktop" onclick="setSerpMode('desktop')">💻 Desktop</button>
+                                    </div>
+                                </div>
+                                <div class="wp-card-body">
+                                    <div id="google-serp-box" class="google-serp-card mobile">
+                                        <div class="serp-site-info">
+                                            <span class="serp-favicon">🐍</span>
+                                            <div class="serp-site-details">
+                                                <span class="serp-sitename" id="serp-display-sitename">Python Sikho Academy</span>
+                                                <span class="serp-url" id="serp-display-url">https://tags-beyond-tobacco-models.trycloudflare.com</span>
+                                            </div>
+                                        </div>
+                                        <h4 class="serp-title" id="serp-display-title">पाइथन सीखो (Python Sikho) - Master Python 3 with Rohit Sir</h4>
+                                        <p class="serp-desc" id="serp-display-desc">पाइथन सीखो - चीफ मेंटर रोहित सर (सम्यक कम्प्यूटर क्लासेज, कुचामन सिटी) से आसान हिंदी में Python 3 सीखें। 12 स्मार्ट मॉड्यूल्स, लाइव कम्पाइलर, क्विज़ व सर्टिफ़िकेट।</p>
+                                    </div>
+                                    <div class="serp-help-text">✨ This is an accurate live simulation of how Google will index and display Python Sikho in search engine results.</div>
+                                </div>
+                            </div>
+
+                            <!-- 2. FOCUS KEYWORD & META TAGS FORM -->
+                            <div class="wp-card" style="margin-top: 16px;">
+                                <div class="wp-card-header">
+                                    <h3>🏷️ Meta Tags & Search Directives</h3>
+                                </div>
+                                <div class="wp-card-body">
+                                    
+                                    <!-- Focus Keyword Input -->
+                                    <div class="wp-form-group">
+                                        <label class="wp-form-label">🎯 Focus Keyword (मुख्य कीवर्ड):</label>
+                                        <input type="text" id="seo-focus-keyword" class="wp-input-text" value="python sikho" placeholder="e.g. python sikho, rohit sir python" oninput="runLiveSeoAudit()">
+                                        <span class="wp-field-desc">The primary phrase you want this website to rank #1 on Google for.</span>
+                                    </div>
+
+                                    <!-- SEO Title -->
+                                    <div class="wp-form-group">
+                                        <div class="wp-label-row">
+                                            <label class="wp-form-label">SEO Title Tag (वेबसाइट शीर्षक):</label>
+                                            <span class="wp-counter-badge" id="title-char-counter">0 / 60 chars</span>
+                                        </div>
+                                        <input type="text" id="seo-site-title" class="wp-input-text" oninput="handleSeoTitleInput(this.value)">
+                                        <div class="wp-progress-bar-track">
+                                            <div id="title-progress-bar" class="wp-progress-bar-fill green" style="width: 80%;"></div>
+                                        </div>
+                                        <span class="wp-field-desc">Recommended length: 50–60 characters.</span>
+                                    </div>
+
+                                    <!-- Meta Description -->
+                                    <div class="wp-form-group">
+                                        <div class="wp-label-row">
+                                            <label class="wp-form-label">Meta Description (गूगल विवरण):</label>
+                                            <span class="wp-counter-badge" id="desc-char-counter">0 / 160 chars</span>
+                                        </div>
+                                        <textarea id="seo-meta-desc" class="wp-textarea" style="min-height: 90px;" oninput="handleSeoDescInput(this.value)"></textarea>
+                                        <div class="wp-progress-bar-track">
+                                            <div id="desc-progress-bar" class="wp-progress-bar-fill green" style="width: 85%;"></div>
+                                        </div>
+                                        <span class="wp-field-desc">Recommended length: 150–160 characters.</span>
+                                    </div>
+
+                                    <!-- Meta Keywords -->
+                                    <div class="wp-form-group">
+                                        <label class="wp-form-label">Meta Keywords (कीवर्ड सूची):</label>
+                                        <input type="text" id="seo-meta-keywords" class="wp-input-text">
+                                        <span class="wp-field-desc">Comma-separated keywords (e.g. python course, rohit sir, samyak classes).</span>
+                                    </div>
+
+                                    <!-- Canonical URL & Robots -->
+                                    <div class="wp-form-grid">
+                                        <div class="wp-form-group">
+                                            <label class="wp-form-label">Canonical URL:</label>
+                                            <input type="text" id="seo-canonical-url" class="wp-input-text" oninput="updateSerpUrl(this.value)">
+                                        </div>
+                                        <div class="wp-form-group">
+                                            <label class="wp-form-label">Robots Directive:</label>
+                                            <select id="seo-robots" class="wp-select">
+                                                <option value="index, follow" selected>index, follow (Recommended)</option>
+                                                <option value="noindex, follow">noindex, follow</option>
+                                                <option value="index, nofollow">index, nofollow</option>
+                                                <option value="noindex, nofollow">noindex, nofollow</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Google Search Console Verification Code -->
+                                    <div class="wp-form-group" style="margin-top: 10px;">
+                                        <label class="wp-form-label">Google Search Console Verification Tag:</label>
+                                        <input type="text" id="seo-google-verification" class="wp-input-text" placeholder="e.g. g-verification-code-xyz123">
+                                        <span class="wp-field-desc">Enter your <code>google-site-verification</code> code here to verify Google Webmaster Tools without editing files.</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Right Col: Yoast Audit & XML Sitemap / Schema.org -->
+                        <div class="wp-seo-right">
+                            
+                            <!-- 1. YOAST / RANKMATH LIVE SEO AUDIT -->
+                            <div class="wp-card">
+                                <div class="wp-card-header">
+                                    <h3>📊 Yoast SEO Real-Time Analysis</h3>
+                                    <span class="wp-score-pill" id="seo-overall-score-pill">🟢 98 / 100 EXCELLENT</span>
+                                </div>
+                                <div class="wp-card-body">
+                                    <ul class="yoast-audit-list" id="yoast-audit-list">
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> Focus keyword appears in SEO Title tag.</li>
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> Focus keyword appears in Meta Description.</li>
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> Title length is optimal for Google SERP (50-60 chars).</li>
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> Meta Description has rich summary and CTA (150-160 chars).</li>
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> Canonical URL is valid and configured.</li>
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> Schema.org Educational Course JSON-LD is active.</li>
+                                        <li class="audit-item pass"><span class="audit-bullet green">●</span> OpenGraph Social Sharing cards are generated.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 2. XML SITEMAP & ROBOTS.TXT VALIDATOR -->
+                            <div class="wp-card" style="margin-top: 16px;">
+                                <div class="wp-card-header">
+                                    <h3>🗺️ XML Sitemap & Robots.txt</h3>
+                                </div>
+                                <div class="wp-card-body">
+                                    <div class="wp-tool-row">
+                                        <div>
+                                            <strong style="font-size: 13px; color: #1e293b;">Dynamic XML Sitemap:</strong>
+                                            <div style="font-size: 11px; color: #64748b;">Automatically indexes all 12 modules for Google bots.</div>
+                                        </div>
+                                        <a href="/sitemap.xml" target="_blank" class="wp-button wp-button-secondary wp-button-small">Open /sitemap.xml ↗</a>
+                                    </div>
+                                    <div class="wp-tool-row" style="margin-top: 10px;">
+                                        <div>
+                                            <strong style="font-size: 13px; color: #1e293b;">Robots.txt Directives:</strong>
+                                            <div style="font-size: 11px; color: #64748b;">Allows public crawling while protecting /wp-admin.</div>
+                                        </div>
+                                        <a href="/robots.txt" target="_blank" class="wp-button wp-button-secondary wp-button-small">Open /robots.txt ↗</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. SCHEMA.ORG RICH SNIPPETS PREVIEW -->
+                            <div class="wp-card" style="margin-top: 16px;">
+                                <div class="wp-card-header">
+                                    <h3>📈 Schema.org JSON-LD (Rich Snippets)</h3>
+                                </div>
+                                <div class="wp-card-body">
+                                    <p style="font-size: 11px; color: #64748b; margin-bottom: 8px;">
+                                        Active Structured Data injected into <code>&lt;head&gt;</code>:
+                                    </p>
+                                    <pre class="schema-code-box"><code>{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Complete Python 3 Masterclass (Zero to Pro)",
+  "description": "Master Python 3 in Hindi with Rohit Sir",
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": "Samyak Computer Classes",
+    "address": "Kuchaman City"
+  }
+}</code></pre>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 11: SECURITY & MASTER PIN SETTINGS -->
+                <!-- ============================================================= -->
+                <div id="wp-view-settings" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">Security & Master PIN Settings</h1>
+                            <p class="wp-subheading">Update Rohit Sir's Master Admin PIN and manage dashboard access locks.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; max-width: 1000px;">
+                        
+                        <!-- Card 1: Change PIN -->
+                        <div class="wp-card">
+                            <div class="wp-card-header">
+                                <h3>🔒 Change Master PIN / Password</h3>
+                            </div>
+                            <div class="wp-card-body">
+                                <div class="wp-form-group">
+                                    <label class="wp-form-label">Enter New Master PIN / Password:</label>
+                                    <div class="wp-input-group">
+                                        <input type="password" id="wp-new-pin-input" class="wp-input-text" placeholder="••••••••" autocomplete="new-password">
+                                        <button type="button" class="wp-toggle-eye" onclick="toggleWpPinEye('wp-new-pin-input')" title="Show/Hide PIN">👁️</button>
+                                    </div>
+                                    <span class="wp-field-desc">Must be at least 4 characters or digits.</span>
+                                </div>
+                                <div class="wp-form-group" style="margin-top: 10px;">
+                                    <label class="wp-form-label">Confirm New Master PIN:</label>
+                                    <div class="wp-input-group">
+                                        <input type="password" id="wp-confirm-pin-input" class="wp-input-text" placeholder="••••••••" autocomplete="new-password">
+                                        <button type="button" class="wp-toggle-eye" onclick="toggleWpPinEye('wp-confirm-pin-input')" title="Show/Hide PIN">👁️</button>
+                                    </div>
+                                </div>
+                                <button class="wp-button wp-button-primary" onclick="submitChangeWpPin()" style="margin-top: 12px; width: 100%;">
+                                    🔒 Update & Secure Master PIN Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: SMS Gateway & OTP Settings -->
+                        <div class="wp-card">
+                            <div class="wp-card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                <h3>📱 SMS Gateway & Real OTP Settings</h3>
+                                <span class="wp-score-pill" style="background: rgba(16, 185, 129, 0.15); color: #059669; font-size: 11px;">⚡ Active Gate</span>
+                            </div>
+                            <div class="wp-card-body">
+                                <div class="wp-form-group">
+                                    <label class="wp-form-label">SMS Provider (गेटवे चुनें):</label>
+                                    <select id="wp-sms-provider" class="wp-select" style="width: 100%;">
+                                        <option value="fast2sms" selected>Fast2SMS (Quick / Dev OTP Route)</option>
+                                        <option value="2factor">2Factor.in (100 Free OTP SMS - Recommended)</option>
+                                    </select>
+                                    <span class="wp-field-desc">Fast2SMS requires active API key. 2Factor.in gives 100 Free SMS on signup.</span>
+                                </div>
+
+                                <div class="wp-form-group" style="margin-top: 10px;">
+                                    <label class="wp-form-label">SMS Gateway API Key:</label>
+                                    <input type="text" id="wp-sms-api-key" class="wp-input-text" value="uqb7oPYiUzxrfhFsMAKZ2L93ElgCnBG51pIdTcD8etyXamwOv4QT64gDmEwvjdn5Hsq2I7iRphyBAF38" placeholder="Paste Fast2SMS or 2Factor API Key">
+                                </div>
+
+                                <div class="wp-form-group" style="margin-top: 10px;">
+                                    <label class="wp-form-label">Test Mobile Number (SMS टेस्ट करें):</label>
+                                    <div style="display: flex; gap: 8px;">
+                                        <input type="text" id="wp-test-sms-phone" class="wp-input-text" value="7240574213" placeholder="10-digit mobile number">
+                                        <button type="button" class="wp-button wp-button-secondary" onclick="testWpSmsGateway()" id="btn-test-sms" style="white-space: nowrap;">
+                                            📤 Send Test SMS
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="wp-sms-test-result" style="display: none; margin-top: 10px; padding: 8px 12px; border-radius: 6px; font-size: 12px;"></div>
+
+                                <button class="wp-button wp-button-primary" onclick="saveWpSmsSettings()" style="margin-top: 14px; width: 100%;">
+                                    💾 Save SMS Gateway Configuration
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 12: BLOG & SEO ARTICLES CMS -->
+                <!-- ============================================================= -->
+                <div id="wp-view-blogs" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">📰 Blog & SEO Articles Manager</h1>
+                            <p class="wp-subheading">Publish high-ranking articles, tutorials, and interview Q&A for Google Search dominance.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <a href="/#blog" target="_blank" class="wp-button wp-button-secondary">🌐 View Public Blog ↗</a>
+                            <button class="wp-button wp-button-primary" onclick="openAddBlogModal()">➕ Write New Article</button>
+                        </div>
+                    </div>
+
+                    <div class="wp-card">
+                        <div class="wp-card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>📚 Published Articles & Knowledge Base</h3>
+                            <button class="wp-button wp-button-secondary wp-button-small" onclick="loadWpBlogArticles()">🔄 Refresh Articles</button>
+                        </div>
+                        <div class="wp-card-body" style="padding: 0;">
+                            <table class="wp-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Article Title</th>
+                                        <th>Category</th>
+                                        <th>Read Time</th>
+                                        <th>Views</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="wp-blogs-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================= -->
+                <!-- VIEW 13: LEADS & ADMISSIONS INQUIRIES (FREE HANDBOOK) -->
+                <!-- ============================================================= -->
+                <div id="wp-view-leads" class="wp-tab-view">
+                    <div class="wp-view-header">
+                        <div>
+                            <h1 class="wp-heading-1">🎯 Leads & Admissions CRM</h1>
+                            <p class="wp-subheading">Track students who requested Rohit Sir's Free 30-Page Python Handbook with 1-click WhatsApp messaging.</p>
+                        </div>
+                        <div class="wp-action-group">
+                            <button class="wp-button wp-button-secondary" onclick="loadWpLeads()">🔄 Refresh Leads</button>
+                            <a href="/api/admin/leads/export-csv?pin=9509" class="wp-button wp-button-primary">📥 Export Leads CSV</a>
+                        </div>
+                    </div>
+
+                    <!-- 3 Summary Metrics Cards -->
+                    <div class="wp-dashboard-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 16px;">
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #ec4899;">
+                            <div class="stat-number" id="leads-total-count" style="color: #ec4899; font-size: 26px; font-weight: 900;">0</div>
+                            <div class="stat-label">🎯 Total Leads Captured</div>
+                        </div>
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #3b82f6;">
+                            <div class="stat-number" id="leads-top-city" style="color: #3b82f6; font-size: 18px; font-weight: 800;">Kuchaman City</div>
+                            <div class="stat-label">📍 Top Student Region</div>
+                        </div>
+                        <div class="wp-card wp-stat-card" style="border-left: 4px solid #10b981;">
+                            <div class="stat-number" style="color: #10b981; font-size: 26px; font-weight: 900;">100%</div>
+                            <div class="stat-label">⚡ Direct WhatsApp Follow-up Ready</div>
+                        </div>
+                    </div>
+
+                    <!-- Leads Data Table -->
+                    <div class="wp-card" style="padding: 0; overflow-x: auto;">
+                        <table class="wp-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student Name</th>
+                                    <th>WhatsApp Number</th>
+                                    <th>City / Town</th>
+                                    <th>Lead Magnet Source</th>
+                                    <th>Captured Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wp-leads-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- 2.4 WORDPRESS FOOTER -->
+        <footer class="wp-footer">
+            <span class="wp-footer-left">Thank you for creating with <a href="https://wordpress.org" target="_blank">WordPress</a> & Python Sikho by Rohit Sir.</span>
+            <span class="wp-footer-right">Version 6.6.2</span>
+        </footer>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 3. MODALS: EDIT STUDENT MODAL -->
+    <!-- ========================================================================= -->
+    <div class="wp-modal-backdrop" id="modal-edit-student" style="display: none;">
+        <div class="wp-modal-card">
+            <div class="wp-modal-header">
+                <h3>✏️ Edit Student Profile</h3>
+                <button class="wp-modal-close" onclick="closeEditStudentModal()">✖</button>
+            </div>
+            <div class="wp-modal-body">
+                <input type="hidden" id="edit-student-id">
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Full Name:</label>
+                    <input type="text" id="edit-student-name" class="wp-input-text">
+                </div>
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Mobile Number (10 Digits):</label>
+                    <input type="text" id="edit-student-phone" class="wp-input-text">
+                </div>
+                <div class="wp-form-group">
+                    <label class="wp-form-label">City / Location:</label>
+                    <input type="text" id="edit-student-city" class="wp-input-text">
+                </div>
+                <div class="wp-form-grid">
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">XP Points:</label>
+                        <input type="number" id="edit-student-xp" class="wp-input-text">
+                    </div>
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">Daily Streak (Days):</label>
+                        <input type="number" id="edit-student-streak" class="wp-input-text">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px;">
+                    <button class="wp-button wp-button-secondary" onclick="closeEditStudentModal()">Cancel</button>
+                    <button class="wp-button wp-button-primary" onclick="submitEditStudent()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 4. MODALS: ADD NEW TOPIC MODAL -->
+    <!-- ========================================================================= -->
+    <div class="wp-modal-backdrop" id="modal-add-topic" style="display: none;">
+        <div class="wp-modal-card">
+            <div class="wp-modal-header">
+                <h3>➕ Add New Curriculum Topic</h3>
+                <button class="wp-modal-close" onclick="closeAddTopicModal()">✖</button>
+            </div>
+            <div class="wp-modal-body">
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Topic Title (e.g. Topic 13: Object Oriented Python):</label>
+                    <input type="text" id="new-topic-title" class="wp-input-text" placeholder="Topic Title">
+                </div>
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Topic Description / Hindi Summary:</label>
+                    <textarea id="new-topic-desc" class="wp-textarea" placeholder="Brief overview of what students will master..."></textarea>
+                </div>
+                <div class="wp-form-grid">
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">XP Points Reward:</label>
+                        <input type="number" id="new-topic-xp" class="wp-input-text" value="100">
+                    </div>
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">Estimated Duration (Mins):</label>
+                        <input type="number" id="new-topic-duration" class="wp-input-text" value="25">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px;">
+                    <button class="wp-button wp-button-secondary" onclick="closeAddTopicModal()">Cancel</button>
+                    <button class="wp-button wp-button-primary" onclick="submitAddTopic()">➕ Create Topic</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 5. MODALS: AWARD BONUS XP MODAL -->
+    <!-- ========================================================================= -->
+    <div class="wp-modal-backdrop" id="modal-award-xp" style="display: none;">
+        <div class="wp-modal-card" style="max-width: 420px;">
+            <div class="wp-modal-header">
+                <h3>⚡ Award Bonus XP to Student</h3>
+                <button class="wp-modal-close" onclick="closeWpAwardXpModal()">✖</button>
+            </div>
+            <div class="wp-modal-body">
+                <input type="hidden" id="wp-award-student-id">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 12px;">
+                    <div style="font-size: 11px; color: #64748b;">Recipient:</div>
+                    <strong style="font-size: 14px; color: #1e293b;" id="wp-award-student-name">Student Name</strong>
+                </div>
+
+                <div class="wp-form-group">
+                    <label class="wp-form-label">XP Amount:</label>
+                    <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                        <button type="button" class="wp-button wp-button-secondary wp-button-small" onclick="document.getElementById('wp-award-xp-amount').value='50'">+50 XP</button>
+                        <button type="button" class="wp-button wp-button-secondary wp-button-small" onclick="document.getElementById('wp-award-xp-amount').value='100'">+100 XP</button>
+                        <button type="button" class="wp-button wp-button-secondary wp-button-small" onclick="document.getElementById('wp-award-xp-amount').value='250'">+250 XP</button>
+                        <button type="button" class="wp-button wp-button-secondary wp-button-small" onclick="document.getElementById('wp-award-xp-amount').value='500'">+500 XP</button>
+                    </div>
+                    <input type="number" id="wp-award-xp-amount" class="wp-input-text" value="100">
+                </div>
+
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Award Reason / Note:</label>
+                    <input type="text" id="wp-award-xp-reason" class="wp-input-text" value="क्लास टेस्ट में उत्कृष्ट प्रदर्शन (Outstanding Performance)">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px;">
+                    <button class="wp-button wp-button-secondary" onclick="closeWpAwardXpModal()">Cancel</button>
+                    <button class="wp-button wp-button-primary" onclick="submitWpAwardXp()">⚡ Award XP Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 6. MODALS: DIRECT GRANT VIP MODAL (1-CLICK UNLOCK) -->
+    <!-- ========================================================================= -->
+    <div class="wp-modal-backdrop" id="modal-grant-vip" style="display: none;">
+        <div class="wp-modal-card" style="max-width: 440px;">
+            <div class="wp-modal-header" style="border-bottom: 2px solid #f59e0b;">
+                <h3 style="color: #b45309;">👑 Direct VIP Lifetime Access Grant</h3>
+                <button class="wp-modal-close" onclick="closeGrantVipModal()">✖</button>
+            </div>
+            <div class="wp-modal-body">
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">
+                    चीफ मेंटर रोहित सर द्वारा किसी भी छात्र को सीधे <strong>VIP एक्सेस (सभी 12 टॉपिक्स)</strong> प्रदान करें:
+                </p>
+
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Select Student (छात्र चुनें):</label>
+                    <select id="grant-vip-student-select" class="wp-select" style="width: 100%;">
+                        <option value="">-- छात्र का चयन करें --</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
+                    <button class="wp-button wp-button-secondary" onclick="closeGrantVipModal()">Cancel</button>
+                    <button class="wp-button wp-button-primary" onclick="submitDirectGrantVip()" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-color: #b45309; font-weight: 800;">
+                        👑 Grant VIP Lifetime Access Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 7. MODALS: WRITE / EDIT BLOG POST MODAL -->
+    <!-- ========================================================================= -->
+    <div class="wp-modal-backdrop" id="modal-add-blog-post" style="display: none;">
+        <div class="wp-modal-card" style="max-width: 700px;">
+            <div class="wp-modal-header">
+                <h3 id="modal-blog-title-heading">➕ Write New Blog Article</h3>
+                <button class="wp-modal-close" onclick="closeAddBlogModal()">✖</button>
+            </div>
+            <div class="wp-modal-body">
+                <input type="hidden" id="edit-blog-id">
+
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Article Title (शीर्षक):</label>
+                    <input type="text" id="blog-input-title" class="wp-input-text" placeholder="e.g. Python 3 में Decorators क्या होते हैं?" oninput="autoGenerateBlogSlug(this.value)">
+                </div>
+
+                <div class="wp-form-grid">
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">URL Slug (पर्मालिंक):</label>
+                        <input type="text" id="blog-input-slug" class="wp-input-text" placeholder="e.g. python-decorators-guide-hindi">
+                    </div>
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">Category (श्रेणी):</label>
+                        <select id="blog-input-category" class="wp-select">
+                            <option value="Python Basics">🐍 Python Basics</option>
+                            <option value="Interview QA">🎯 Interview QA</option>
+                            <option value="Career & Roadmap">🗺️ Career & Roadmap</option>
+                            <option value="Language Comparison">⚖️ Language Comparison</option>
+                            <option value="Local Coaching">🏫 Local Coaching</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wp-form-grid">
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">Focus Keyword (मुख्य कीवर्ड):</label>
+                        <input type="text" id="blog-input-keyword" class="wp-input-text" placeholder="e.g. python decorators hindi">
+                    </div>
+                    <div class="wp-form-group">
+                        <label class="wp-form-label">Estimated Read Time:</label>
+                        <input type="text" id="blog-input-readtime" class="wp-input-text" value="5 min read">
+                    </div>
+                </div>
+
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Meta Description (गूगल स्निपेट विवरण):</label>
+                    <input type="text" id="blog-input-metadesc" class="wp-input-text" placeholder="Brief summary for Google search results...">
+                </div>
+
+                <div class="wp-form-group">
+                    <label class="wp-form-label">Article Content (Markdown format):</label>
+                    <textarea id="blog-input-content" class="wp-textarea" style="min-height: 220px; font-family: 'JetBrains Mono', monospace;" placeholder="# Article Heading&#10;&#10;Write detailed article in Hindi/English with code snippets..."></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px;">
+                    <button class="wp-button wp-button-secondary" onclick="closeAddBlogModal()">Cancel</button>
+                    <button class="wp-button wp-button-primary" onclick="submitSaveBlogPost()">💾 Publish Article Now</button>
+                </div>
+            </div>
+        </div>
+    <!-- ========================================================================= -->
+    <!-- 8. MODALS: ZOOM PAYMENT SCREENSHOT / SLIP -->
+    <!-- ========================================================================= -->
+    <div class="wp-modal-backdrop" id="modal-zoom-screenshot" style="display: none;">
+        <div class="wp-modal-card" style="max-width: 560px; text-align: center;">
+            <div class="wp-modal-header" style="border-bottom: 2px solid #22c55e;">
+                <h3 id="zoom-slip-title" style="color: #15803d;">📷 Payment Receipt / Screenshot Inspection</h3>
+                <button class="wp-modal-close" onclick="closeScreenshotZoomModal()">✖</button>
+            </div>
+            <div class="wp-modal-body">
+                <div style="background: #0f172a; padding: 12px; border-radius: 8px; margin-bottom: 14px; text-align: center;">
+                    <img id="zoom-slip-img" src="" alt="Payment Receipt" style="max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 6px; border: 1px solid #334155; display: inline-block;">
+                </div>
+                <div style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 14px; font-size: 13px; text-align: left;" id="zoom-slip-meta">
+                    <!-- Dynamic details -->
+                </div>
+                <div id="zoom-slip-actions" style="display: flex; justify-content: center; gap: 10px;">
+                    <button class="wp-button wp-button-secondary" onclick="closeScreenshotZoomModal()">Close</button>
+                    <button class="wp-button wp-button-primary" id="btn-zoom-approve" style="background:#16a34a; border-color:#15803d; font-weight:800;">✅ Approve & Unlock VIP Course</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/admin.js') }}?v=6.0"></script>
+</body>
+</html>

@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="hi" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags (Managed via /wp-admin SEO Suite) -->
+    <title>{{ settings.get('site_title', 'पाइथन सीखो (Python Sikho) - Master Python 3 with Rohit Sir | Samyak Classes Kuchaman City') }}</title>
+    <meta name="title" content="{{ settings.get('site_title', 'पाइथन सीखो (Python Sikho) - Master Python 3 with Rohit Sir') }}">
+    <meta name="description" content="{{ settings.get('meta_description', 'राजस्थान का नंबर 1 हिंदी-इंग्लिश Python 3 लर्निंग पोर्टल। सम्यक कंप्यूटर क्लासेज कुचामन सिटी में रोहित सर द्वारा हैंड्स-ऑन कोडिंग, 100+ प्रैक्टिकल प्रोग्राम्स और लाइव सर्टिफिकेट।') }}">
+    <meta name="keywords" content="{{ settings.get('meta_keywords', 'Python Sikho, Python Course in Hindi, Rohit Sir Python, Samyak Computer Classes Kuchaman, Learn Python Kuchaman City, Python Tutorials Hindi') }}">
+    <meta name="author" content="{{ settings.get('author', 'Rohit Sir (Samyak Computer Classes)') }}">
+    <meta name="robots" content="{{ settings.get('robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1') }}">
+    {% if settings.get('canonical_url') %}
+    <link rel="canonical" href="{{ settings.get('canonical_url') }}">
+    {% endif %}
+    {% if settings.get('google_verification') %}
+    <meta name="google-site-verification" content="{{ settings.get('google_verification') }}">
+    {% endif %}
+
+    <!-- Open Graph / Facebook / WhatsApp Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ settings.get('canonical_url', 'http://127.0.0.1:5700/') }}">
+    <meta property="og:title" content="{{ settings.get('og_title', settings.get('site_title', 'पाइथन सीखो (Python Sikho) - Rohit Sir')) }}">
+    <meta property="og:description" content="{{ settings.get('og_description', settings.get('meta_description', 'हिंदी में सीखें आसान Python 3 प्रोग्रामिंग। सम्यक कंप्यूटर क्लासेज कुचामन सिटी।')) }}">
+    <meta property="og:site_name" content="पाइथन सीखो (Python Sikho)">
+    <meta property="og:locale" content="hi_IN">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ settings.get('og_title', settings.get('site_title', 'पाइथन सीखो (Python Sikho) - Rohit Sir')) }}">
+    <meta name="twitter:description" content="{{ settings.get('og_description', settings.get('meta_description', 'हिंदी में सीखें आसान Python 3 प्रोग्रामिंग। सम्यक कंप्यूटर क्लासेज कुचामन सिटी।')) }}">
+
+    <!-- Schema.org JSON-LD Structured Data for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "पाइथन सीखो (Python Sikho) - Samyak Computer Classes",
+      "description": "{{ settings.get('meta_description', 'Python 3 Programming Academy in Kuchaman City') }}",
+      "url": "{{ settings.get('canonical_url', 'http://127.0.0.1:5700/') }}",
+      "telephone": "{{ settings.get('mentor_phone', '+91 9509934266') }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ settings.get('institute_address', 'Station Road, Kuchaman City, Nagaur, Rajasthan 341508') }}",
+        "addressLocality": "Kuchaman City",
+        "addressRegion": "Rajasthan",
+        "postalCode": "341508",
+        "addressCountry": "IN"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Rohit Sir",
+        "jobTitle": "Chief Python Mentor & Full-Stack Developer"
+      },
+      "offers": {
+        "@type": "Offer",
+        "category": "Education",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PythonSikho">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=11.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="custom-cursor-active">
+    <!-- Custom Cyberpunk Designer Cursor Elements -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Ambient Neon Mesh Background -->
+    <div class="ambient-glow-bg"></div>
+    <div class="cyber-grid-overlay"></div>
+
+    <!-- ========================================================================= -->
+    <!-- LIVE ANNOUNCEMENT BANNER (Active portal broadcast from Rohit Sir) -->
+    <!-- ========================================================================= -->
+    <div id="live-announcement-banner" class="announcement-banner" style="display: none;">
+        <div class="announcement-inner">
+            <span class="announcement-pulse-icon">📢</span>
+            <div class="announcement-text-wrap">
+                <span class="announcement-badge" id="banner-announcement-badge">NOTICE</span>
+                <span class="announcement-text" id="banner-announcement-text">कल दोपहर 2:00 बजे Python Functions का लाइव टेस्ट है!</span>
+                <span class="announcement-date" id="banner-announcement-date"></span>
+            </div>
+            <button class="announcement-close-btn" onclick="dismissAnnouncement()" title="Dismiss Notice">✖</button>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 1. TOP GLOBAL NAVBAR -->
+    <!-- ========================================================================= -->
+    <header class="top-navbar" id="main-navbar">
+        <div class="brand-box" onclick="showLandingPage()" style="cursor: pointer;" title="Go to Home">
+            <div class="brand-logo-glow">🐍</div>
+            <div>
+                <h1 class="brand-title">पाइथन सीखो <span class="brand-en">(Python Sikho)</span></h1>
+                <p class="brand-sub">Official Python 3 Academy • Chief Mentor: Rohit Sir (Samyak Classes)</p>
+            </div>
+        </div>
+
+        <!-- PUBLIC LANDING NAV LINKS (Visible when on Landing Page) -->
+        <nav class="landing-nav-links" id="landing-nav-links">
+            <a href="javascript:void(0)" onclick="showStudentDashboard()" class="landing-nav-item" id="nav-link-student-dash" style="color: #38bdf8; font-weight: 800;">📊 Student Dashboard</a>
+            <a href="javascript:void(0)" onclick="showBlogPage()" class="landing-nav-item" style="color: #fbbf24; font-weight: 800;">📰 Blog & Tutorials</a>
+            <a href="#leaderboard-section" class="landing-nav-item" style="color: #34d399; font-weight: 800;">🏆 Leaderboard</a>
+            <a href="javascript:void(0)" onclick="openLeadCheatsheetModal()" class="landing-nav-item" style="color: #f472b6; font-weight: 800;">🎁 Free Handbook</a>
+            <a href="#notices-section" class="landing-nav-item notice-nav-highlight">📢 Notice Board</a>
+            <a href="#features-section" class="landing-nav-item">✨ Features</a>
+            <a href="#curriculum-section" class="landing-nav-item">📚 12 Topics</a>
+            <a href="#mentor-section" class="landing-nav-item">👑 Rohit Sir</a>
+            <a href="#certificate-preview-section" class="landing-nav-item">🏆 Certificate</a>
+        </nav>
+
+        <!-- STUDENT LEARNING PIPELINE CHIPS (Visible when in Learning Portal) -->
+        <div class="pipeline-flow-bar" id="pipeline-flow-bar" style="display: none;">
+            <button class="step-chip-home" onclick="showLandingPage()" title="Back to Home / Landing">🏠 Home</button>
+            <button class="step-chip active" onclick="switchPortalStep(1)"><span class="step-num">1</span> 📖 Notes</button>
+            <button class="step-chip" onclick="switchPortalStep(2)"><span class="step-num">2</span> 💻 Practice</button>
+            <button class="step-chip" onclick="switchPortalStep(3)"><span class="step-num">3</span> ❓ Quiz</button>
+            <button class="step-chip" onclick="switchPortalStep(4)"><span class="step-num">4</span> 🚀 Projects</button>
+            <button class="step-chip" onclick="switchPortalStep(5)"><span class="step-num">5</span> 🏆 Certificate</button>
+            <button class="step-chip" onclick="showStudentDashboard()" style="background: rgba(56, 189, 248, 0.15); border-color: #38bdf8; color: #38bdf8; font-weight: 800;">📊 Dashboard</button>
+            <button class="step-chip" onclick="showBlogPage()" style="background: rgba(251, 191, 36, 0.15); border-color: #fbbf24; color: #fde68a; font-weight: 800;">📰 Blog</button>
+        </div>
+
+        <!-- TOP RIGHT ACTIONS -->
+        <div class="nav-right-actions">
+            <!-- PWA INSTALL APP BUTTON -->
+            <button class="btn-pwa-install" id="nav-btn-pwa-install" onclick="triggerPwaInstall()" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;" title="Install Python Sikho as Native App">
+                📲 Install App
+            </button>
+
+            <!-- VIP COURSE UPGRADE BUTTON -->
+            <button class="btn-vip-upgrade-badge" id="nav-btn-vip" onclick="openPaywallModal()">
+                👑 VIP Course (₹299)
+            </button>
+
+            <a href="/wp-admin" target="_blank" class="btn-mentor-badge" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;" title="Rohit Sir WordPress Admin Dashboard & SEO Suite">
+                👑 WP-Admin
+            </a>
+
+            <!-- GUEST / LOGGED-OUT STATE BUTTON -->
+            <button class="btn-login-glow" id="nav-btn-login" onclick="openAuthModal()">
+                🔐 Login / Sign Up
+            </button>
+
+            <!-- LOGGED-IN STUDENT PROFILE PILL (Hidden by default, shown after login) -->
+            <div class="user-profile-widget" id="user-profile-widget" onclick="toggleProfileDropdown()" style="display: none;" title="Click for profile & logout">
+                <div class="streak-badge">🔥 <span id="user-streak">1</span>d</div>
+                <div class="xp-badge">⚡ <span id="user-xp">100</span> XP</div>
+                <div class="user-avatar-circle" id="nav-user-avatar-box">
+                    <span id="nav-user-initials">ST</span>
+                </div>
+                <div class="user-meta-sm">
+                    <span class="user-name-text" id="nav-user-name">Student</span>
+                    <span class="user-role-text" id="nav-user-city">Kuchaman City ▾</span>
+                </div>
+            </div>
+
+            <!-- Profile Dropdown Menu -->
+            <div class="profile-dropdown-menu" id="profile-dropdown">
+                <div class="dropdown-header">
+                    <div class="dropdown-avatar-circle" id="dropdown-avatar-box">
+                        <span id="dropdown-user-initials">ST</span>
+                    </div>
+                    <div>
+                        <div class="dropdown-name" id="dropdown-name">Student</div>
+                        <div class="dropdown-phone" id="dropdown-phone">📱 +91 XXXXXXXXXX</div>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-stats">
+                    <div><span>XP Points:</span> <strong id="dropdown-xp">100 XP</strong></div>
+                    <div><span>Streak:</span> <strong id="dropdown-streak">1 Day</strong></div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item-btn" onclick="showStudentDashboard(); toggleProfileDropdown();" style="color: #38bdf8; font-weight: 800;">📊 My Student Dashboard (स्टूडेंट पैनल)</button>
+                <button class="dropdown-item-btn" onclick="enterLearningPortal(); toggleProfileDropdown();">📚 Go to Learning Arena</button>
+                <button class="dropdown-item-btn" onclick="showBlogPage(); toggleProfileDropdown();" style="color: #fbbf24; font-weight: 800;">📰 Python Sikho Blog (ज्ञान केंद्र)</button>
+                <a href="/wp-admin" target="_blank" class="dropdown-item-btn" style="text-decoration: none; display: block; text-align: left; color: #ffca28; font-weight: 700;" onclick="toggleProfileDropdown();">👑 WordPress Super Admin (/wp-admin)</a>
+                <button class="dropdown-item-btn" onclick="openMentorAdminModal(); toggleProfileDropdown();">⚡ Quick Admin Popup</button>
+                <button class="dropdown-item-btn logout" onclick="logoutStudent()">🚪 Logout (लॉगआउट)</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 1: KILLER DARK THEME LANDING PAGE (सार्वजनिक लैंडिंग पेज) -->
+    <!-- ========================================================================= -->
+    <div id="landing-page-view" class="view-container active">
+        
+        <!-- 1. HERO SECTION -->
+        <section class="landing-hero-section">
+            <div class="hero-left-col">
+                <div class="hero-tag-pill">
+                    <span class="pulse-dot"></span>
+                    <span>🎓 SAMYAK COMPUTER CLASSES • KUCHAMAN CITY • 📞 9509934266</span>
+                </div>
+
+                <h1 class="hero-main-title">
+                    Master Python 3 from <span class="neon-gradient-text">Zero to Pro</span><br>
+                    <span class="hindi-gradient-sub">आसान हिंदी में पाइथन सीखें</span>
+                </h1>
+
+                <p class="hero-subtext">
+                    चीफ मेंटर <strong>रोहित सर (सम्यक क्लासेज)</strong> के विशेष मार्गदर्शन में — 
+                    <strong>10 टॉपिक-वाइज स्मार्ट नोट्स</strong>, <strong>लाइव इन-ब्राउज़र कोडिंग कम्पाइलर</strong>, 
+                    <strong>60-सेकंड टॉपिक क्विज़</strong>, <strong>ऑटोमेटेड असाइनमेंट्स</strong> और 
+                    <strong>आधिकारिक सत्यापित सर्टिफ़िकेट</strong>!
+                </p>
+
+                <!-- Value Proposition Highlights -->
+                <div class="hero-feature-pills">
+                    <div class="hero-pill">⚡ +100 XP Welcome Bonus</div>
+                    <div class="hero-pill">🔥 10 Topic Modules</div>
+                    <div class="hero-pill">💻 100% In-Browser Code Runner</div>
+                    <div class="hero-pill">🤖 24/7 AI Coding Tutor</div>
+                </div>
+
+                <!-- Hero Action Buttons -->
+                <div class="hero-cta-group">
+                    <button class="btn-primary-glow btn-hero-lg" onclick="handleHeroStartClick()">
+                        <span>🚀 Start Learning Free (शुरू करें)</span>
+                        <span class="btn-sub-badge">+100 XP</span>
+                    </button>
+                    <button class="btn-secondary btn-hero-lg" onclick="openAuthModal()">
+                        <span>🔐 Login with OTP (लॉगिन)</span>
+                    </button>
+                    <a href="#curriculum-section" class="btn-outline-glow btn-hero-lg">
+                        <span>📖 View 12 Topics</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Right: 3D Holographic Card of Rohit Sir -->
+            <div class="hero-right-col">
+                <div class="mentor-hologram-card">
+                    <div class="hologram-badge-live">
+                        <span class="live-blink-dot"></span>
+                        <span>DAILY LIVE BATCH @ 02:00 PM</span>
+                    </div>
+
+                    <div class="mentor-avatar-frame">
+                        <img src="{{ url_for('static', filename='uploads/rohit_sir.png') }}" alt="Rohit Sir Chief Python Mentor" class="mentor-hero-img">
+                        <div class="avatar-glow-ring"></div>
+                    </div>
+
+                    <div class="mentor-details-box">
+                        <h2 class="mentor-name-title">Rohit Sir</h2>
+                        <div class="mentor-designation">Chief Python Mentor & Lead Instructor</div>
+                        <div class="mentor-org">Samyak Computer Classes, Kuchaman City</div>
+
+                        <div class="mentor-stat-grid">
+                            <div class="stat-cell">
+                                <span class="stat-val">100%</span>
+                                <span class="stat-lbl">Practical Coding</span>
+                            </div>
+                            <div class="stat-cell">
+                                <span class="stat-val">12</span>
+                                <span class="stat-lbl">Topic Modules</span>
+                            </div>
+                            <div class="stat-cell">
+                                <span class="stat-val">Verified</span>
+                                <span class="stat-lbl">Certificate</span>
+                            </div>
+                        </div>
+
+                        <div class="mentor-contact-badge">
+                            <span>📞 Helpline: <strong>9509934266</strong></span>
+                            <span class="city-tag">📍 Kuchaman City</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 1.5 DEDICATED LIVE NOTICE BOARD & OFFICIAL ANNOUNCEMENTS SECTION -->
+        <!-- ========================================================================= -->
+        <section class="landing-section notices-landing-section" id="notices-section">
+            <div class="section-title-wrap">
+                <div class="flex-align" style="justify-content: center; gap: 10px; margin-bottom: 8px;">
+                    <span class="live-notice-pulse-badge">
+                        <span class="live-pulse-dot"></span> LIVE NOTICE BOARD
+                    </span>
+                    <button class="btn-refresh-notices" onclick="loadPublicNotices(true)" title="Click to refresh notices">
+                        🔄 Live Refresh
+                    </button>
+                </div>
+                <h2 class="section-main-heading">📢 रोहित सर का लाइव सूचना पट्ट <span class="gold-gradient-text">(Official Notice Board)</span></h2>
+                <p class="section-subtext">सम्यक कंप्यूटर क्लासेज कुचामन सिटी • रोहित सर द्वारा जारी ताज़ा नोटिस, लाइव टेस्ट शेड्यूल व महत्वपूर्ण बैच घोषणाएं:</p>
+            </div>
+
+            <!-- Notices Feed Container (Auto-populated in real-time) -->
+            <div class="notices-feed-grid" id="notices-public-feed">
+                <div class="notice-loading-state">
+                    <div class="cyber-spinner-sm"></div>
+                    <span>⏳ लोड हो रहे हैं अधिकृत नोटिस...</span>
+                </div>
+            </div>
+
+            <div class="notices-footer-meta">
+                <div class="flex-align" style="gap: 8px;">
+                    <span style="color: var(--gold-glow);">🛡️ अधिकृत सूचना पट्ट</span>
+                    <span>• सम्यक कंप्यूटर क्लासेज, कुचामन सिटी</span>
+                </div>
+                <div class="flex-align" style="gap: 12px;">
+                    <span>📞 हेल्पलाइन: <strong>9509934266</strong></span>
+                    <span>⏰ डेली लाइव बैच: <strong>02:00 PM</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE LIVE PLAYGROUND TEASER (Try Python in Browser) -->
+        <section class="landing-section" id="playground-section">
+            <div class="section-title-wrap">
+                <span class="section-kicker">⚡ INSTANT EXECUTION</span>
+                <h2 class="section-main-heading">Try Python Right Now in Your Browser</h2>
+                <p class="section-subtext">बिना किसी सॉफ्टवेयर या इंस्टॉलेशन के, सीधे ब्राउज़र में लाइव Python कोड रन करके देखें:</p>
+            </div>
+
+            <div class="landing-playground-card">
+                <div class="playground-editor-side">
+                    <div class="playground-header">
+                        <div class="flex-align">
+                            <span class="file-dot red"></span>
+                            <span class="file-dot yellow"></span>
+                            <span class="file-dot green"></span>
+                            <span class="tab-filename">live_demo.py</span>
+                        </div>
+                        <button class="btn-run-code-sm" onclick="runLandingDemoCode()">
+                            <span>▶</span> RUN CODE
+                        </button>
+                    </div>
+                    <textarea id="landing-code-box" spellcheck="false"># 🐍 Python Sikho Live Demo with Rohit Sir
+academy = "Samyak Computer Classes, Kuchaman City"
+mentor = "Rohit Sir (📞 9509934266)"
+topics = 10
+
+print("=" * 45)
+print("  🚀 WELCOME TO PYTHON SIKHO ACADEMY")
+print("=" * 45)
+print(f"📍 Academy : {academy}")
+print(f"⭐ Mentor  : {mentor}")
+print(f"📚 Topics  : {topics} In-Depth Modules (Syntax to Functions)")
+print("⚡ Ready to become a Python Master? Start Free!")
+print("=" * 45)</textarea>
+                </div>
+
+                <div class="playground-terminal-side">
+                    <div class="terminal-header">
+                        <span style="color: var(--gold-glow); font-family: monospace; font-size: 12px;">🖥️ Output Console</span>
+                        <span id="landing-exec-badge" style="color: var(--cyan-glow); font-size: 11px;">Click 'RUN CODE'</span>
+                    </div>
+                    <pre id="landing-terminal-output" class="terminal-body">>>> Click 'RUN CODE' above to execute Python script in real-time...</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 12-TOPIC COMPREHENSIVE CURRICULUM SECTION -->
+        <!-- 3. 12-TOPIC COMPREHENSIVE CURRICULUM SECTION (SLIDING TECH SHOWCASE) -->
+        <section class="landing-section" id="curriculum-section">
+            <div class="section-title-wrap">
+                <div class="slider-header-flex">
+                    <span class="section-kicker">⚡ 12 MASTER MODULES • LIVE SLIDER</span>
+                    <div class="slider-controls-group">
+                        <button class="view-toggle-btn active" id="btn-toggle-slider" onclick="switchCurriculumView('slider')">🎞️ Slider View</button>
+                        <button class="view-toggle-btn" id="btn-toggle-grid" onclick="switchCurriculumView('grid')">📑 Grid View</button>
+                        <div class="slider-nav-arrows">
+                            <button class="btn-slider-arrow" onclick="scrollTopicsSlider(-1)" title="Previous Topics">‹</button>
+                            <button class="btn-slider-arrow" onclick="scrollTopicsSlider(1)" title="Next Topics">›</button>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="section-main-heading">12 Topic-Wise Python Modules</h2>
+                <p class="section-subtext">पाइथन के परिचय से लेकर डेटा टाइप्स, ऑपरेटर्स, कलेक्शन्स, लूप्स और फंक्शंस तक संपूर्ण पाठ्यक्रम:</p>
+            </div>
+
+            <!-- 3.1 CONTINUOUS SLIDING TECH MARQUEE -->
+            <div class="topics-marquee-container" id="topics-marquee-wrapper" onmouseenter="pauseTopicSlider()" onmouseleave="resumeTopicSlider()">
+                <div class="topics-marquee-track" id="topics-marquee-track">
+                    <!-- Cycle 1 (Topics 1 - 12) -->
+                    <!-- Topic 1 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(1)" data-topic-id="1" style="--dot-color: #00f0ff; --card-border-glow: #00f0ff; --card-shadow-glow: rgba(0,240,255,0.3); --tag-bg: rgba(0,240,255,0.08); --tag-border: rgba(0,240,255,0.3); --tag-color: #00f0ff; --icon-glow: rgba(0,240,255,0.6);">
+                        <span class="cyber-topic-num">01</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 128 128" width="38" height="38"><path fill="#00f0ff" d="M63.5 12c-27.5 0-25.7 11.9-25.7 11.9l.03 12.3h26.2v3.7H26.3S12 38.3 12 65.8c0 27.5 12.5 26.5 12.5 26.5h7.5v-10.4s-.4-12.5 12.3-12.5h21.2s11.7.2 11.7-11.4V23.7s1.6-11.7-23.7-11.7zm-14 7.6c2.4 0 4.3 1.9 4.3 4.3s-1.9 4.3-4.3 4.3-4.3-1.9-4.3-4.3 1.9-4.3 4.3-4.3z"/><path fill="#f59e0b" d="M64.5 116c27.5 0 25.7-11.9 25.7-11.9l-.03-12.3H64v-3.7h37.7s14.3 1.6 14.3-25.9c0-27.5-12.5-26.5-12.5-26.5h-7.5v10.4s.4 12.5-12.3 12.5H65s-11.7-.2-11.7 11.4v34.3s-1.6 11.7 23.7 11.7zm14-7.6c-2.4 0-4.3-1.9-4.3-4.3s1.9-4.3 4.3-4.3 4.3 1.9 4.3 4.3-1.9 4.3-4.3 4.3z"/></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Introduction</h3>
+                            <span class="cyber-category-tag">CORE SYNTAX</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="1">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 2 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(2)" data-topic-id="2" style="--dot-color: #a855f7; --card-border-glow: #a855f7; --card-shadow-glow: rgba(168,85,247,0.3); --tag-bg: rgba(168,85,247,0.08); --tag-border: rgba(168,85,247,0.3); --tag-color: #c084fc; --icon-glow: rgba(168,85,247,0.6);">
+                        <span class="cyber-topic-num">02</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="6" y="10" width="52" height="44" rx="10" fill="rgba(168,85,247,0.15)" stroke="#a855f7" stroke-width="2.5"/><text x="32" y="38" fill="#e9d5ff" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" text-anchor="middle">{ T }</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Data Types</h3>
+                            <span class="cyber-category-tag">PRIMITIVES</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="2">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 3 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(3)" data-topic-id="3" style="--dot-color: #00f0ff; --card-border-glow: #00f0ff; --card-shadow-glow: rgba(0,240,255,0.3); --tag-bg: rgba(0,240,255,0.08); --tag-border: rgba(0,240,255,0.3); --tag-color: #00f0ff; --icon-glow: rgba(0,240,255,0.6);">
+                        <span class="cyber-topic-num">03</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="32" cy="32" r="24" fill="rgba(0,240,255,0.15)" stroke="#00f0ff" stroke-width="2.5"/><text x="32" y="38" fill="#a7f3d0" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" text-anchor="middle">x = y</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Variables</h3>
+                            <span class="cyber-category-tag">MEMORY & PEP 8</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="3">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 4 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(4)" data-topic-id="4" style="--dot-color: #f59e0b; --card-border-glow: #f59e0b; --card-shadow-glow: rgba(245,158,11,0.3); --tag-bg: rgba(245,158,11,0.08); --tag-border: rgba(245,158,11,0.3); --tag-color: #fbbf24; --icon-glow: rgba(245,158,11,0.6);">
+                        <span class="cyber-topic-num">04</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="32" cy="32" r="24" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2.5"/><text x="32" y="39" fill="#fde68a" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" text-anchor="middle">+ - * %</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Operators</h3>
+                            <span class="cyber-category-tag">OPERATORS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="4">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 5 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(5)" data-topic-id="5" style="--dot-color: #10b981; --card-border-glow: #10b981; --card-shadow-glow: rgba(16,185,129,0.3); --tag-bg: rgba(16,185,129,0.08); --tag-border: rgba(16,185,129,0.3); --tag-color: #34d399; --icon-glow: rgba(16,185,129,0.6);">
+                        <span class="cyber-topic-num">05</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><polygon points="32,8 56,32 32,56 8,32" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2.5"/><text x="32" y="37" fill="#6ee7b7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">if/else</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Conditions</h3>
+                            <span class="cyber-category-tag">CONTROL FLOW</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="5">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 6 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(6)" data-topic-id="6" style="--dot-color: #00f0ff; --card-border-glow: #00f0ff; --card-shadow-glow: rgba(0,240,255,0.3); --tag-bg: rgba(0,240,255,0.08); --tag-border: rgba(0,240,255,0.3); --tag-color: #00f0ff; --icon-glow: rgba(0,240,255,0.6);">
+                        <span class="cyber-topic-num">06</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="8" y="12" width="48" height="40" rx="8" fill="rgba(0,240,255,0.15)" stroke="#00f0ff" stroke-width="2.5"/><text x="32" y="38" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" text-anchor="middle">[ ... ]</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Lists</h3>
+                            <span class="cyber-category-tag">COLLECTIONS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="6">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 7 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(7)" data-topic-id="7" style="--dot-color: #ec4899; --card-border-glow: #ec4899; --card-shadow-glow: rgba(236,72,153,0.3); --tag-bg: rgba(236,72,153,0.08); --tag-border: rgba(236,72,153,0.3); --tag-color: #f472b6; --icon-glow: rgba(236,72,153,0.6);">
+                        <span class="cyber-topic-num">07</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="12" y="24" width="40" height="30" rx="6" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="2.5"/><path d="M22 24v-8a10 10 0 0 1 20 0v8" fill="none" stroke="#ec4899" stroke-width="2.5"/><text x="32" y="44" fill="#fbcfe8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" text-anchor="middle">( , )</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Tuples</h3>
+                            <span class="cyber-category-tag">IMMUTABLE</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="7">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 8 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(8)" data-topic-id="8" style="--dot-color: #8b5cf6; --card-border-glow: #8b5cf6; --card-shadow-glow: rgba(139,92,246,0.3); --tag-bg: rgba(139,92,246,0.08); --tag-border: rgba(139,92,246,0.3); --tag-color: #a78bfa; --icon-glow: rgba(139,92,246,0.6);">
+                        <span class="cyber-topic-num">08</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="24" cy="32" r="16" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="2"/><circle cx="40" cy="32" r="16" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="2"/><text x="32" y="36" fill="#c4b5fd" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">A∩B</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Sets</h3>
+                            <span class="cyber-category-tag">UNIQUE SETS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="8">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 9 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(9)" data-topic-id="9" style="--dot-color: #38bdf8; --card-border-glow: #38bdf8; --card-shadow-glow: rgba(56,189,248,0.3); --tag-bg: rgba(56,189,248,0.08); --tag-border: rgba(56,189,248,0.3); --tag-color: #38bdf8; --icon-glow: rgba(56,189,248,0.6);">
+                        <span class="cyber-topic-num">09</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="8" y="12" width="48" height="40" rx="8" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="2.5"/><text x="32" y="37" fill="#bae6fd" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" text-anchor="middle">{k: v}</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Dictionaries</h3>
+                            <span class="cyber-category-tag">KEY-VALUE</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="9">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 10 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(10)" data-topic-id="10" style="--dot-color: #f59e0b; --card-border-glow: #f59e0b; --card-shadow-glow: rgba(245,158,11,0.3); --tag-bg: rgba(245,158,11,0.08); --tag-border: rgba(245,158,11,0.3); --tag-color: #fbbf24; --icon-glow: rgba(245,158,11,0.6);">
+                        <span class="cyber-topic-num">10</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><path d="M32 10 A22 22 0 0 1 54 32 A22 22 0 0 1 32 54" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/><polygon points="32,6 32,14 40,10" fill="#f59e0b"/><path d="M32 54 A22 22 0 0 1 10 32 A22 22 0 0 1 32 10" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 3"/><polygon points="32,58 32,50 24,54" fill="#f59e0b"/><text x="32" y="36" fill="#fef08a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">for/in</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Loops</h3>
+                            <span class="cyber-category-tag">ITERATION</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="10">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 11 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(11)" data-topic-id="11" style="--dot-color: #10b981; --card-border-glow: #10b981; --card-shadow-glow: rgba(16,185,129,0.3); --tag-bg: rgba(16,185,129,0.08); --tag-border: rgba(16,185,129,0.3); --tag-color: #34d399; --icon-glow: rgba(16,185,129,0.6);">
+                        <span class="cyber-topic-num">11</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="32" cy="32" r="24" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2.5"/><text x="32" y="38" fill="#a7f3d0" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" text-anchor="middle">def() λ</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Functions</h3>
+                            <span class="cyber-category-tag">REUSABILITY</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="11">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 12 -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(12)" data-topic-id="12" style="--dot-color: #f59e0b; --card-border-glow: #f59e0b; --card-shadow-glow: rgba(245,158,11,0.3); --tag-bg: rgba(245,158,11,0.08); --tag-border: rgba(245,158,11,0.3); --tag-color: #fbbf24; --icon-glow: rgba(245,158,11,0.6);">
+                        <span class="cyber-topic-num">12</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="8" y="12" width="48" height="40" rx="8" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2.5"/><text x="32" y="37" fill="#fde68a" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900" text-anchor="middle">f"{str}"</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Strings & f-str</h3>
+                            <span class="cyber-category-tag">STRINGS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="12">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Duplicate Cycle 2 for 100% Seamless Infinite CSS Marquee Animation -->
+                    <!-- Topic 1 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(1)" data-topic-id="1" style="--dot-color: #00f0ff; --card-border-glow: #00f0ff; --card-shadow-glow: rgba(0,240,255,0.3); --tag-bg: rgba(0,240,255,0.08); --tag-border: rgba(0,240,255,0.3); --tag-color: #00f0ff; --icon-glow: rgba(0,240,255,0.6);">
+                        <span class="cyber-topic-num">01</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 128 128" width="38" height="38"><path fill="#00f0ff" d="M63.5 12c-27.5 0-25.7 11.9-25.7 11.9l.03 12.3h26.2v3.7H26.3S12 38.3 12 65.8c0 27.5 12.5 26.5 12.5 26.5h7.5v-10.4s-.4-12.5 12.3-12.5h21.2s11.7.2 11.7-11.4V23.7s1.6-11.7-23.7-11.7zm-14 7.6c2.4 0 4.3 1.9 4.3 4.3s-1.9 4.3-4.3 4.3-4.3-1.9-4.3-4.3 1.9-4.3 4.3-4.3z"/><path fill="#f59e0b" d="M64.5 116c27.5 0 25.7-11.9 25.7-11.9l-.03-12.3H64v-3.7h37.7s14.3 1.6 14.3-25.9c0-27.5-12.5-26.5-12.5-26.5h-7.5v10.4s.4 12.5-12.3 12.5H65s-11.7-.2-11.7 11.4v34.3s-1.6 11.7 23.7 11.7zm14-7.6c-2.4 0-4.3-1.9-4.3-4.3s1.9-4.3 4.3-4.3 4.3 1.9 4.3 4.3-1.9 4.3-4.3 4.3z"/></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Introduction</h3>
+                            <span class="cyber-category-tag">CORE SYNTAX</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="1">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 2 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(2)" data-topic-id="2" style="--dot-color: #a855f7; --card-border-glow: #a855f7; --card-shadow-glow: rgba(168,85,247,0.3); --tag-bg: rgba(168,85,247,0.08); --tag-border: rgba(168,85,247,0.3); --tag-color: #c084fc; --icon-glow: rgba(168,85,247,0.6);">
+                        <span class="cyber-topic-num">02</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="6" y="10" width="52" height="44" rx="10" fill="rgba(168,85,247,0.15)" stroke="#a855f7" stroke-width="2.5"/><text x="32" y="38" fill="#e9d5ff" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" text-anchor="middle">{ T }</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Data Types</h3>
+                            <span class="cyber-category-tag">PRIMITIVES</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="2">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 3 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(3)" data-topic-id="3" style="--dot-color: #00f0ff; --card-border-glow: #00f0ff; --card-shadow-glow: rgba(0,240,255,0.3); --tag-bg: rgba(0,240,255,0.08); --tag-border: rgba(0,240,255,0.3); --tag-color: #00f0ff; --icon-glow: rgba(0,240,255,0.6);">
+                        <span class="cyber-topic-num">03</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="32" cy="32" r="24" fill="rgba(0,240,255,0.15)" stroke="#00f0ff" stroke-width="2.5"/><text x="32" y="38" fill="#a7f3d0" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" text-anchor="middle">x = y</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Variables</h3>
+                            <span class="cyber-category-tag">MEMORY & PEP 8</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="3">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 4 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(4)" data-topic-id="4" style="--dot-color: #f59e0b; --card-border-glow: #f59e0b; --card-shadow-glow: rgba(245,158,11,0.3); --tag-bg: rgba(245,158,11,0.08); --tag-border: rgba(245,158,11,0.3); --tag-color: #fbbf24; --icon-glow: rgba(245,158,11,0.6);">
+                        <span class="cyber-topic-num">04</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="32" cy="32" r="24" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2.5"/><text x="32" y="39" fill="#fde68a" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" text-anchor="middle">+ - * %</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Operators</h3>
+                            <span class="cyber-category-tag">OPERATORS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="4">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 5 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(5)" data-topic-id="5" style="--dot-color: #10b981; --card-border-glow: #10b981; --card-shadow-glow: rgba(16,185,129,0.3); --tag-bg: rgba(16,185,129,0.08); --tag-border: rgba(16,185,129,0.3); --tag-color: #34d399; --icon-glow: rgba(16,185,129,0.6);">
+                        <span class="cyber-topic-num">05</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><polygon points="32,8 56,32 32,56 8,32" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2.5"/><text x="32" y="37" fill="#6ee7b7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">if/else</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Conditions</h3>
+                            <span class="cyber-category-tag">CONTROL FLOW</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="5">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 6 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(6)" data-topic-id="6" style="--dot-color: #00f0ff; --card-border-glow: #00f0ff; --card-shadow-glow: rgba(0,240,255,0.3); --tag-bg: rgba(0,240,255,0.08); --tag-border: rgba(0,240,255,0.3); --tag-color: #00f0ff; --icon-glow: rgba(0,240,255,0.6);">
+                        <span class="cyber-topic-num">06</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="8" y="12" width="48" height="40" rx="8" fill="rgba(0,240,255,0.15)" stroke="#00f0ff" stroke-width="2.5"/><text x="32" y="38" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" text-anchor="middle">[ ... ]</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Lists</h3>
+                            <span class="cyber-category-tag">COLLECTIONS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="6">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 7 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(7)" data-topic-id="7" style="--dot-color: #ec4899; --card-border-glow: #ec4899; --card-shadow-glow: rgba(236,72,153,0.3); --tag-bg: rgba(236,72,153,0.08); --tag-border: rgba(236,72,153,0.3); --tag-color: #f472b6; --icon-glow: rgba(236,72,153,0.6);">
+                        <span class="cyber-topic-num">07</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="12" y="24" width="40" height="30" rx="6" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="2.5"/><path d="M22 24v-8a10 10 0 0 1 20 0v8" fill="none" stroke="#ec4899" stroke-width="2.5"/><text x="32" y="44" fill="#fbcfe8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" text-anchor="middle">( , )</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Tuples</h3>
+                            <span class="cyber-category-tag">IMMUTABLE</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="7">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 8 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(8)" data-topic-id="8" style="--dot-color: #8b5cf6; --card-border-glow: #8b5cf6; --card-shadow-glow: rgba(139,92,246,0.3); --tag-bg: rgba(139,92,246,0.08); --tag-border: rgba(139,92,246,0.3); --tag-color: #a78bfa; --icon-glow: rgba(139,92,246,0.6);">
+                        <span class="cyber-topic-num">08</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="24" cy="32" r="16" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="2"/><circle cx="40" cy="32" r="16" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="2"/><text x="32" y="36" fill="#c4b5fd" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">A∩B</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Sets</h3>
+                            <span class="cyber-category-tag">UNIQUE SETS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="8">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 9 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(9)" data-topic-id="9" style="--dot-color: #38bdf8; --card-border-glow: #38bdf8; --card-shadow-glow: rgba(56,189,248,0.3); --tag-bg: rgba(56,189,248,0.08); --tag-border: rgba(56,189,248,0.3); --tag-color: #38bdf8; --icon-glow: rgba(56,189,248,0.6);">
+                        <span class="cyber-topic-num">09</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="8" y="12" width="48" height="40" rx="8" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="2.5"/><text x="32" y="37" fill="#bae6fd" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" text-anchor="middle">{k: v}</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Dictionaries</h3>
+                            <span class="cyber-category-tag">KEY-VALUE</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="9">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 10 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(10)" data-topic-id="10" style="--dot-color: #f59e0b; --card-border-glow: #f59e0b; --card-shadow-glow: rgba(245,158,11,0.3); --tag-bg: rgba(245,158,11,0.08); --tag-border: rgba(245,158,11,0.3); --tag-color: #fbbf24; --icon-glow: rgba(245,158,11,0.6);">
+                        <span class="cyber-topic-num">10</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><path d="M32 10 A22 22 0 0 1 54 32 A22 22 0 0 1 32 54" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/><polygon points="32,6 32,14 40,10" fill="#f59e0b"/><path d="M32 54 A22 22 0 0 1 10 32 A22 22 0 0 1 32 10" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 3"/><polygon points="32,58 32,50 24,54" fill="#f59e0b"/><text x="32" y="36" fill="#fef08a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">for/in</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Loops</h3>
+                            <span class="cyber-category-tag">ITERATION</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="10">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 11 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(11)" data-topic-id="11" style="--dot-color: #10b981; --card-border-glow: #10b981; --card-shadow-glow: rgba(16,185,129,0.3); --tag-bg: rgba(16,185,129,0.08); --tag-border: rgba(16,185,129,0.3); --tag-color: #34d399; --icon-glow: rgba(16,185,129,0.6);">
+                        <span class="cyber-topic-num">11</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><circle cx="32" cy="32" r="24" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2.5"/><text x="32" y="38" fill="#a7f3d0" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" text-anchor="middle">def() λ</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Functions</h3>
+                            <span class="cyber-category-tag">REUSABILITY</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="11">🔒 Login to Unlock ➜</button>
+                    </div>
+
+                    <!-- Topic 12 Repeat -->
+                    <div class="cyber-topic-card" onclick="handleTopicCardClick(12)" data-topic-id="12" style="--dot-color: #f59e0b; --card-border-glow: #f59e0b; --card-shadow-glow: rgba(245,158,11,0.3); --tag-bg: rgba(245,158,11,0.08); --tag-border: rgba(245,158,11,0.3); --tag-color: #fbbf24; --icon-glow: rgba(245,158,11,0.6);">
+                        <span class="cyber-topic-num">12</span>
+                        <span class="cyber-top-dot"></span>
+                        <div class="cyber-icon-badge">
+                            <svg viewBox="0 0 64 64" width="38" height="38"><rect x="8" y="12" width="48" height="40" rx="8" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2.5"/><text x="32" y="37" fill="#fde68a" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900" text-anchor="middle">f"{str}"</text></svg>
+                        </div>
+                        <div class="cyber-card-body">
+                            <h3 class="cyber-topic-title">Strings & f-str</h3>
+                            <span class="cyber-category-tag">STRINGS</span>
+                        </div>
+                        <button class="cyber-card-action topic-btn-auth" data-topic-id="12">🔒 Login to Unlock ➜</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.2 SLIDER FOOTER CAPTION (MATCHING SCREENSHOT) -->
+            <div class="slider-footer-caption" id="slider-footer-caption">
+                <span class="cyber-pulse-dot"></span>
+                <span class="cyber-caption-text">HOVER TO PAUSE • SWIPE ON MOBILE • CLICK TO OPEN</span>
+                <span class="cyber-pulse-dot"></span>
+            </div>
+
+            <!-- 3.3 OPTIONAL GRID VIEW (TOGGLEABLE) -->
+            <div class="curriculum-grid-10 curriculum-grid-view-mode" id="curriculum-grid-cards" style="display: none;">
+                <!-- Dynamically cloned or shown in Grid View -->
+            </div>
+        </section>
+
+        <!-- 4. KILLER FEATURES SHOWCASE GRID -->
+        <section class="landing-section" id="features-section">
+            <div class="section-title-wrap">
+                <span class="section-kicker">🚀 POWERHOUSE FEATURES</span>
+                <h2 class="section-main-heading">Why Learn with Python Sikho?</h2>
+                <p class="section-subtext">हर छात्र को कोडिंग में मास्टर बनाने के लिए तैयार किए गए आधुनिक टूल्स:</p>
+            </div>
+
+            <div class="features-grid-6">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3 class="feature-title">Smart Hindi-English Notes</h3>
+                    <p class="feature-desc">प्रत्येक टॉपिक के आसान हिंदी-अंग्रेज़ी नोट्स, ऑडियो नरेशन और 1-क्लिक लाइव सैंडबॉक्स कोड एग्जीक्यूशन।</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3 class="feature-title">In-Browser Code Sandbox</h3>
+                    <p class="feature-desc">बिना किसी इंस्टॉलेशन के सीधे ब्राउज़र में कोडिंग। `input()` के लिए इंटरएक्टिव stdin और `Ctrl+Enter` शॉर्टकट।</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3 class="feature-title">60-Second Timed Quizzes</h3>
+                    <p class="feature-desc">हर टॉपिक के बाद 60 सेकंड का टाइमर क्विज़, तुरंत स्कोर, XP पॉइंट्स और स्पष्टीकरण (Explanations)।</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">24/7 Rohit Sir AI Tutor</h3>
+                    <p class="feature-desc">पाइथन से जुड़े किसी भी सवाल या कोडिंग एरर का तुरंत हिंदी-अंग्रेज़ी में 24/7 समाधान।</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3 class="feature-title">Capstone Projects (.zip)</h3>
+                    <p class="feature-desc">रियल-वर्ल्ड प्रोडक्शन प्रोजेक्ट्स और 1-क्लिक में डाउनलोड होने वाले स्टार्टर कोड ज़िप पैकेज।</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Rohit Sir Verified Certificate</h3>
+                    <p class="feature-desc">सर्टिफ़िकेट नंबर, क्यूआर कोड और पैरेंट्स के WhatsApp पर 1-क्लिक शेयरिंग के साथ HD सर्टिफ़िकेट।</p>
+                </div>
+            </div>
+        <!-- 4.1 LIVE STUDENT LEADERBOARD & HALL OF FAME -->
+        <section class="landing-section" id="leaderboard-section">
+            <div class="section-title-wrap">
+                <span class="section-kicker">🏆 HALL OF FAME</span>
+                <h2 class="section-main-heading">Live Student Leaderboard</h2>
+                <p class="section-subtext">कुचामन सिटी व राजस्थान के टॉप Python कोडर्स • सर्वाधिक XP व क्विज़ स्कोरर्स:</p>
+            </div>
+
+            <!-- Top 3 Podium Cards -->
+            <div class="leaderboard-podium-grid" id="leaderboard-podium-container">
+                <!-- Dynamically populated by JS: Rank 2 (Silver), Rank 1 (Gold), Rank 3 (Bronze) -->
+            </div>
+
+            <!-- Leaderboard Full Table (Ranks 4 to 10) -->
+            <div class="leaderboard-table-card">
+                <div class="leaderboard-table-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">🎖️</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #fff;">Top Active Coders Ranking</h3>
+                    </div>
+                    <button class="btn-secondary" onclick="loadLeaderboardData()" style="font-size: 11px; padding: 6px 12px;">🔄 Live Refresh</button>
+                </div>
+                <div class="leaderboard-table-responsive">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Student Name</th>
+                                <th>City</th>
+                                <th>Mastery Level</th>
+                                <th>Topics Done</th>
+                                <th>Streak</th>
+                                <th>Total XP</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-table-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CERTIFICATE & MENTOR SPOTLIGHT SECTION -->
+        <section class="landing-section" id="mentor-section">
+            <div class="mentor-banner-card">
+                <div class="mentor-banner-left">
+                    <img src="{{ url_for('static', filename='uploads/rohit_sir.png') }}" alt="Rohit Sir" class="mentor-banner-img">
+                    <div>
+                        <span class="active-badge-pill">⭐ CHIEF PYTHON MENTOR</span>
+                        <h2 style="font-size: 26px; font-weight: 800; color: #fff; margin: 8px 0;">Rohit Sir</h2>
+                        <p style="color: var(--cyan-glow); font-size: 14px; font-weight: 600;">Samyak Computer Classes, Kuchaman City</p>
+                        <p style="color: var(--text-muted); font-size: 13px; line-height: 1.6; margin-top: 8px;">
+                            "हमारा उद्देश्य केवल थ्योरी सिखाना नहीं, बल्कि कुचामन सिटी के हर छात्र को व्यावहारिक और लॉजिकल कोडिंग में पारंगत बनाना है।"
+                        </p>
+                        <div class="banner-contact-row">
+                            <span>📞 <strong>9509934266</strong></span>
+                            <span>⏰ <strong>Daily 02:00 PM Batch</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mentor-banner-right" id="certificate-preview-section">
+                    <div class="mini-cert-preview-box">
+                        <div class="mini-cert-header">
+                            <div style="font-size: 10px; color: var(--gold-glow); font-weight: 800;">OFFICIAL CERTIFICATE</div>
+                            <div style="font-size: 8px; color: var(--cyan-glow);">PS-2026-VERIFIED</div>
+                        </div>
+                        <div class="mini-cert-body">
+                            <div style="font-size: 12px; font-weight: 800; color: #fff;">Python 3 Masterclass Certified</div>
+                            <div style="font-size: 10px; color: var(--text-muted); margin: 4px 0;">Issued by: Samyak Classes, Kuchaman City</div>
+                            <div style="font-size: 10px; color: var(--gold-glow); font-weight: 700;">⭐ Chief Mentor: Rohit Sir ⭐</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary-glow" onclick="handleHeroStartClick()" style="width: 100%; margin-top: 14px;">
+                        🎯 Get Certified with Rohit Sir →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. BOTTOM CTA FOOTER BANNER -->
+        <section class="landing-cta-banner">
+            <h2 class="cta-banner-title">Ready to Start Your Python Journey?</h2>
+            <p class="cta-banner-sub">फ्री में रजिस्टर करें, +100 Welcome XP पाएं और आज ही रोहित सर के साथ पहला कोड चलाएं!</p>
+            <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                <button class="btn-primary-glow btn-hero-lg" onclick="openAuthModal()">
+                    🚀 Start Learning Free Now →
+                </button>
+                <button class="btn-secondary btn-hero-lg" onclick="openMentorAdminModal()">
+                    👑 Mentor Admin Dashboard
+                </button>
+            </div>
+            <div class="footer-bottom-text">
+                © 2026 <strong>Python Sikho (पाइथन सीखो)</strong> • Chief Mentor: Rohit Sir • Samyak Computer Classes, Kuchaman City • 📞 9509934266
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 2: STUDENT LEARNING PORTAL (लॉगिन के बाद का इंटरएक्टिव पोर्टल) -->
+    <!-- ========================================================================= -->
+    <div id="learning-portal-view" class="view-container" style="display: none;">
+        
+        <!-- STUDENT MASTERY STATUS BANNER -->
+        <div class="student-mastery-banner">
+            <div class="mastery-banner-left">
+                <div class="student-greeting-text">
+                    👋 नमस्ते, <strong id="portal-student-name" style="color: var(--cyan-glow);">छात्र</strong>!
+                </div>
+                <div class="student-badges-row">
+                    <span class="badge-pill-fire">🔥 <span id="portal-student-streak">1</span> Day Streak</span>
+                    <span class="badge-pill-xp">⚡ <span id="portal-student-xp">100</span> XP Points</span>
+                    <span class="badge-pill-level" id="portal-student-level">🛡️ Level: Python Apprentice</span>
+                </div>
+            </div>
+
+            <div class="mastery-banner-right">
+                <div id="portal-vip-badge-container" class="portal-vip-badge-wrap">
+                    <!-- Populated dynamically: e.g. "👑 VIP Lifetime Member" or "🔒 Demo Mode • Unlock VIP @ ₹299" -->
+                    <button class="btn-vip-banner-upgrade" id="btn-portal-vip-upgrade" onclick="openPaywallModal()">
+                        👑 Unlock All 12 Topics (₹299) ➜
+                    </button>
+                </div>
+                <div class="progress-meta-text">
+                    <span>🎓 12-Topic Masterclass: <strong id="progress-topics-count" style="color: var(--cyan-glow);">0</strong> / 12 Topics</span>
+                    <span id="progress-topics-pct" style="color: var(--gold-glow); font-weight: 800;">0%</span>
+                </div>
+                <div class="course-progress-track">
+                    <div class="course-progress-fill" id="course-progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-layout">
+            <!-- TOPIC SELECTOR QUICK BAR (Visible on Topics 1 to 12) -->
+            <div class="topic-quick-bar" id="topic-quick-bar">
+                <span class="topic-bar-label">🎯 Choose Topic:</span>
+                <div class="topic-chips-scroll" id="topic-chips-container">
+                    <!-- Rendered dynamically for Topics 1 to 12 -->
+                </div>
+            </div>
+
+            <!-- MAIN LEARNING WORKSPACE CONTAINER -->
+            <main class="main-workspace">
+                
+                <!-- ========================================================================= -->
+                <!-- STEP 1: SMART NOTES & CHEATSHEET (नोट्स & चीटशीट) -->
+                <!-- ========================================================================= -->
+                <section id="portal-step-1" class="portal-step-section active">
+                    <div class="section-header-row">
+                        <div>
+                            <span class="active-badge-pill" id="notes-ch-badge">Topic 1 Notes</span>
+                            <h2 class="section-heading" id="notes-title">Smart Notes & Code Cheatsheets</h2>
+                        </div>
+                        <div class="flex-gap">
+                            <button class="btn-voice-reader" id="btn-audio-notes" onclick="toggleAudioReader()">
+                                🔊 Listen (हिंदी में सुनें)
+                            </button>
+                            <button class="btn-secondary" onclick="printNotes()">📥 Print / PDF</button>
+                            <button class="btn-complete-topic" onclick="markCurrentTopicCompleted()">
+                                ✅ Mark Done (+50 XP)
+                            </button>
+                            <button class="btn-primary-glow" onclick="switchPortalStep(2)">Next: Code Practice 💻 →</button>
+                        </div>
+                    </div>
+
+                    <div class="notes-container-card" id="notes-content-box">
+                        <!-- Populated dynamically with Markdown & Code Snippets -->
+                    </div>
+
+                    <div class="step-footer-actions">
+                        <button class="btn-complete-topic-lg" onclick="markCurrentTopicCompleted()">
+                            ✅ Complete Topic & Earn +50 XP
+                        </button>
+                        <button class="btn-primary-glow btn-hero-lg" onclick="switchPortalStep(2)">
+                            Next: Live Practice Sandbox 💻 →
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ========================================================================= -->
+                <!-- STEP 2: IN-BROWSER PRACTICE SANDBOX (लाइव कोडिंग कम्पाइलर) -->
+                <!-- ========================================================================= -->
+                <section id="portal-step-2" class="portal-step-section">
+                    <div class="section-header-row">
+                        <div>
+                            <span class="active-badge-pill" id="practice-ch-badge">Topic 1 Practice</span>
+                            <h2 class="section-heading" id="practice-main-heading">💻 Live Python Practice Arena</h2>
+                        </div>
+                        <div class="flex-gap">
+                            <button class="btn-secondary" onclick="switchPortalStep(1)">← Notes</button>
+                            <button class="btn-primary-glow" onclick="switchPortalStep(3)">Next: Take Quiz ❓ →</button>
+                        </div>
+                    </div>
+
+                    <div class="sandbox-grid">
+                        <!-- Code Editor Panel -->
+                        <div class="editor-panel">
+                            <div class="editor-header">
+                                <div class="flex-align">
+                                    <span class="file-dot red"></span>
+                                    <span class="file-dot yellow"></span>
+                                    <span class="file-dot green"></span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-left: 8px; color: var(--cyan-glow);">main.py</span>
+                                </div>
+                                <div class="flex-align">
+                                    <button class="btn-editor-action" onclick="sendEditorCodeToAi()" title="Ask Rohit Sir AI Tutor to explain/debug this code">🤖 Ask AI Tutor</button>
+                                    <button class="btn-editor-action" onclick="resetStarterCode()">🔄 Reset</button>
+                                    <button class="btn-run-code" onclick="executeSandboxCode()">
+                                        <span>▶</span> RUN CODE (चलाएँ)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <textarea id="python-code-editor" spellcheck="false" placeholder="Write Python code here..."></textarea>
+
+                            <!-- Interactive Stdin Input for input() scripts -->
+                            <div class="stdin-input-bar">
+                                <label style="font-size: 11px; font-weight: 700; color: var(--cyan-glow);">⌨️ Program Input (stdin for input()):</label>
+                                <input type="text" id="sandbox-stdin-input" placeholder="e.g. Rahul or 25 (values for input() calls)...">
+                            </div>
+                        </div>
+
+                        <!-- Terminal Output Panel -->
+                        <div class="terminal-panel">
+                            <div class="terminal-header">
+                                <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold-glow);">🖥️ Live Output Terminal</span>
+                                <span id="exec-time-badge" style="font-size: 11px; color: var(--text-muted);">Ready</span>
+                            </div>
+                            <pre id="terminal-output" class="terminal-body">Click 'RUN CODE' to execute your Python script...</pre>
+                            
+                            <div class="practice-hint-box" id="practice-instructions">
+                                <strong>🎯 Instructions:</strong> <span id="instruction-text">Write your code and check the output.</span>
+                            </div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; display: flex; align-items: center; gap: 6px;">
+                                <span>⚡ Pro-Tip: Press</span>
+                                <kbd style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--cyan-glow);">Ctrl + Enter</kbd>
+                                <span>to run code immediately!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-footer-actions">
+                        <button class="btn-complete-topic-lg" onclick="markCurrentTopicCompleted()">
+                            ✅ Mark Practice Completed & Earn +50 XP
+                        </button>
+                        <button class="btn-primary-glow btn-hero-lg" onclick="switchPortalStep(3)">
+                            Next: Topic Quiz Arena ❓ →
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ========================================================================= -->
+                <!-- STEP 3: GAMIFIED TOPIC QUIZ ARENA (क्विज़ & असेसमेंट) -->
+                <!-- ========================================================================= -->
+                <section id="portal-step-3" class="portal-step-section">
+                    <div class="section-header-row">
+                        <div>
+                            <span class="active-badge-pill" id="quiz-ch-badge">Topic 1 Quiz</span>
+                            <h2 class="section-heading" id="quiz-header-title">❓ Interactive Topic Quiz (असेसमेंट)</h2>
+                        </div>
+                        <div class="flex-gap">
+                            <button class="btn-secondary" onclick="switchPortalStep(2)">← Practice</button>
+                            <button class="btn-primary-glow" onclick="switchPortalStep(4)">Next: Projects 🚀 →</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-arena-card">
+                        <div class="quiz-status-bar">
+                            <div>
+                                <span>Questions: </span>
+                                <strong id="quiz-count-display">5 Questions</strong>
+                            </div>
+                            <div class="quiz-timer-box" id="quiz-timer-badge">
+                                ⏱️ Time Left: <span id="quiz-timer-seconds">60</span>s
+                            </div>
+                            <div class="quiz-reward-pill">⚡ Reward: +50 XP Points</div>
+                        </div>
+
+                        <form id="quiz-form" onsubmit="submitQuiz(event)">
+                            <div id="quiz-questions-container">
+                                <!-- Populated dynamically -->
+                            </div>
+
+                            <div class="quiz-footer-actions">
+                                <button type="submit" class="btn-submit-quiz">
+                                    🚀 Submit Answers & Check Score
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="quiz-results-banner" style="display: none;"></div>
+                    </div>
+                </section>
+
+                <!-- ========================================================================= -->
+                <!-- STEP 4: CAPSTONE PROJECTS (रियल-वर्ल्ड प्रोजेक्ट्स) -->
+                <!-- ========================================================================= -->
+                <section id="portal-step-4" class="portal-step-section">
+                    <div class="section-header-row">
+                        <div>
+                            <span class="active-badge-pill">Production Ready</span>
+                            <h2 class="section-heading">🚀 Capstone Python Projects</h2>
+                        </div>
+                        <div class="flex-gap">
+                            <button class="btn-secondary" onclick="switchPortalStep(3)">← Quiz</button>
+                            <button class="btn-primary-glow" onclick="switchPortalStep(5)">Claim Certificate 🏆 →</button>
+                        </div>
+                    </div>
+
+                    <div class="projects-grid" id="projects-container">
+                        <!-- Populated dynamically -->
+                    </div>
+                </section>
+
+                <!-- ========================================================================= -->
+                <!-- STEP 5: VERIFIED DIGITAL CERTIFICATE (प्रमाणपत्र) -->
+                <!-- ========================================================================= -->
+                <section id="portal-step-5" class="portal-step-section">
+                    <div class="section-header-row">
+                        <div>
+                            <span class="active-badge-pill">Official Credential</span>
+                            <h2 class="section-heading">🏆 Official Certificate of Excellence</h2>
+                        </div>
+                        <div class="flex-gap">
+                            <button class="btn-secondary" onclick="switchPortalStep(4)">← Projects</button>
+                            <button class="btn-primary-glow" onclick="downloadCertificateImage()">📥 Download HD Certificate</button>
+                        </div>
+                    </div>
+
+                    <div class="certificate-preview-card">
+                        <div class="cert-gold-border">
+                            <div class="cert-watermark">SAMYAK</div>
+                            
+                            <div class="cert-top-header">
+                                <div class="cert-logo-seal">🐍</div>
+                                <div>
+                                    <h1 class="cert-inst-title">SAMYAK COMPUTER CLASSES</h1>
+                                    <p class="cert-inst-sub">Center for Advanced IT & Software Excellence • Kuchaman City</p>
+                                </div>
+                                <div class="cert-badge-ribbon">⭐ EXCELLENCE</div>
+                            </div>
+
+                            <div class="cert-center-body">
+                                <div class="cert-pre-text">THIS IS TO CERTIFY THAT</div>
+                                <div class="cert-student-name-text" id="cert-student-name">STUDENT NAME</div>
+                                <div class="cert-honor-text">
+                                    has successfully completed the comprehensive hands-on curriculum
+                                </div>
+                                <div class="cert-course-title">
+                                    COMPLETE PYTHON 3 MASTERCLASS (ZERO TO PRO)
+                                </div>
+                                <div class="cert-desc-text">
+                                    Covering Python Syntax, Dynamic Typing, Control Flow, Loops, Data Structures, In-Depth Functions & Capstone Projects with Grade: <strong>A+ Outstanding</strong> under the mentorship of <strong>Rohit Sir</strong>.
+                                </div>
+                            </div>
+
+                            <div class="cert-bottom-row">
+                                <div class="cert-footer-col">
+                                    <div class="cert-signature-line">
+                                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: var(--cyan-glow); font-weight: 800;">Rohit Sir</span>
+                                    </div>
+                                    <div class="cert-signer-role">Rohit Sir (Chief Mentor)</div>
+                                    <div style="font-size: 10px; color: var(--text-muted);">Samyak Computer Classes</div>
+                                </div>
+
+                                <div class="cert-seal-box">
+                                    <div class="gold-seal-badge">⭐ VERIFIED MASTER ⭐</div>
+                                    <div style="font-size: 9px; font-family: monospace; color: var(--cyan-glow); margin-top: 4px;" id="cert-number-display">PS-2026-0001</div>
+                                </div>
+
+                                <div class="cert-footer-col" style="text-align: right;">
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">Issue Date: <strong id="cert-date" style="color: #fff;">11 Sept 2026</strong></div>
+                                    <div class="cert-qr-box">
+                                        <span style="font-size: 18px;">📱</span>
+                                        <span style="font-size: 8px; font-family: monospace; color: var(--cyan-glow);">SCAN TO VERIFY</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                            <button class="btn-primary-glow" onclick="downloadCertificateImage()">
+                                📥 Download Certificate (HD PNG)
+                            </button>
+                            <button class="btn-secondary" onclick="window.print()">
+                                🖨️ Print Certificate
+                            </button>
+                            <button class="btn-secondary" onclick="shareCertificateWhatsApp()">
+                                📲 Send to Parent WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 3: DEDICATED STUDENT PORTAL DASHBOARD (स्टूडेंट पैनल) -->
+    <!-- ========================================================================= -->
+    <div id="student-dashboard-view" class="view-container" style="display: none;">
+        <div class="student-dash-wrapper">
+            
+            <!-- Navigation Header -->
+            <div class="sd-top-nav-bar">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-secondary" onclick="showLandingPage()">🏠 Back to Home</button>
+                    <button class="btn-primary-glow" onclick="enterLearningPortal()">📚 Go to Learning Arena ➜</button>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-secondary" onclick="showBlogPage()" style="border-color: #fbbf24; color: #fde68a;">📰 Read Python Blog</button>
+                    <button class="btn-secondary" onclick="refreshStudentDashboard()">🔄 Refresh Stats</button>
+                </div>
+            </div>
+
+            <!-- Student Profile & VIP Card -->
+            <div class="sd-hero-card">
+                <div class="sd-profile-left">
+                    <div class="sd-avatar-box" id="sd-avatar-initials">ST</div>
+                    <div class="sd-profile-info">
+                        <h2 id="sd-student-name">
+                            <span>Student Name</span>
+                            <span id="sd-vip-badge-pill" class="vip-active-pill">🟢 Free Demo (Topic 1)</span>
+                        </h2>
+                        <div class="sd-profile-meta">
+                            <span id="sd-student-phone">📱 +91 XXXXXXXXXX</span>
+                            <span id="sd-student-city">📍 Kuchaman City</span>
+                            <span id="sd-student-id">🎓 Roll ID: PS-2026-0001</span>
+                            <span id="sd-joined-date">📅 Enrolled: Sept 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sd-hero-actions">
+                    <button class="btn-primary-glow" id="sd-btn-upgrade-vip" onclick="openPaywallModal()" style="font-size: 12px; padding: 8px 16px;">
+                        👑 Upgrade to VIP @ ₹299
+                    </button>
+                    <button class="btn-secondary" id="sd-btn-cert" onclick="downloadCertificateImage()" style="font-size: 12px; padding: 8px 16px;">
+                        🏆 Download Certificate
+                    </button>
+                    <a id="sd-btn-whatsapp-mentor" href="https://api.whatsapp.com/send?phone=919509934266&text=Hello%20Rohit%20Sir,%20I%20have%20a%20doubt%20in%20Python%20Sikho" target="_blank" class="btn-secondary" style="font-size: 12px; padding: 8px 16px; text-decoration: none; border-color: #25d366; color: #25d366; display: inline-flex; align-items: center; gap: 6px;">
+                        💬 Chat with Rohit Sir
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4-Card Analytics Overview -->
+            <div class="sd-metrics-grid">
+                
+                <!-- Metric 1: Course Completion -->
+                <div class="sd-metric-card" style="border-top: 3px solid #00f0ff;">
+                    <div class="sd-metric-header">
+                        <span class="sd-metric-title">Course Progress (कोर्स पूर्णता)</span>
+                        <span class="sd-metric-icon">🎯</span>
+                    </div>
+                    <div class="sd-metric-val">
+                        <span id="sd-completed-topics-count">0</span> / <span id="sd-total-topics-count">12</span> <span style="font-size: 16px; font-weight: 700; color: #64748b;">Topics</span>
+                    </div>
+                    <div class="sd-metric-sub" id="sd-progress-pct-text">0% Completed</div>
+                    <div class="sd-progress-track">
+                        <div class="sd-progress-bar-fill" id="sd-progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Metric 2: Remaining Modules -->
+                <div class="sd-metric-card" style="border-top: 3px solid #f59e0b;">
+                    <div class="sd-metric-header">
+                        <span class="sd-metric-title">Remaining Topics (शेष टॉपिक्स)</span>
+                        <span class="sd-metric-icon">⏳</span>
+                    </div>
+                    <div class="sd-metric-val">
+                        <span id="sd-remaining-topics-count" style="color: #fbbf24;">12</span> <span style="font-size: 16px; font-weight: 700; color: #64748b;">Topics Left</span>
+                    </div>
+                    <div class="sd-metric-sub" style="color: #fde68a;" id="sd-remaining-status-text">Complete remaining modules to unlock Certificate!</div>
+                </div>
+
+                <!-- Metric 3: Total XP Points & Level -->
+                <div class="sd-metric-card" style="border-top: 3px solid #a855f7;">
+                    <div class="sd-metric-header">
+                        <span class="sd-metric-title">XP Points & Rank (छात्र स्तर)</span>
+                        <span class="sd-metric-icon">⚡</span>
+                    </div>
+                    <div class="sd-metric-val">
+                        <span id="sd-xp-display" style="color: #c084fc;">100</span> <span style="font-size: 16px; font-weight: 700; color: #64748b;">XP</span>
+                    </div>
+                    <div class="sd-metric-sub" id="sd-mastery-level-badge" style="color: #e9d5ff;">🛡️ Level: Python Beginner</div>
+                </div>
+
+                <!-- Metric 4: Daily Streak & Accuracy -->
+                <div class="sd-metric-card" style="border-top: 3px solid #10b981;">
+                    <div class="sd-metric-header">
+                        <span class="sd-metric-title">Daily Streak & Accuracy (सटीकता)</span>
+                        <span class="sd-metric-icon">🔥</span>
+                    </div>
+                    <div class="sd-metric-val">
+                        <span id="sd-streak-count" style="color: #34d399;">1</span> <span style="font-size: 16px; font-weight: 700; color: #64748b;">Days Streak</span>
+                    </div>
+                    <div class="sd-metric-sub" id="sd-quiz-accuracy-text" style="color: #a7f3d0;">Quiz Accuracy: 100% (Pass Rate)</div>
+                </div>
+
+            </div>
+
+            <!-- Detailed 12-Module Curriculum Roadmap -->
+            <div class="sd-section-card">
+                <div class="sd-section-header">
+                    <div>
+                        <h3 class="sd-section-title">
+                            <span>📚</span> 12-Module Detailed Curriculum & Progress Tracker
+                        </h3>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                            हर टॉपिक को पूरा करने पर <strong>+100 XP</strong> बोनस और क्विज़ पॉइंट्स मिलते हैं।
+                        </p>
+                    </div>
+                    <div style="font-size: 12px; color: var(--cyan-glow); font-weight: 700;">
+                        💡 Topic 1: 100% Free Demo • Topics 2-12: VIP Access
+                    </div>
+                </div>
+
+                <!-- Dynamic 12 Topics Grid -->
+                <div class="sd-topics-grid" id="sd-topics-grid">
+                    <!-- Rendered dynamically by loadStudentDashboard() -->
+                </div>
+            </div>
+
+            <!-- Quiz & Analytics Breakdown Card -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                
+                <!-- Card A: Quiz Analytics -->
+                <div class="sd-section-card" style="margin-bottom: 0;">
+                    <div class="sd-section-header">
+                        <h3 class="sd-section-title">
+                            <span>📊</span> Quiz & Test Performance
+                        </h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 11px; color: var(--text-muted);">Quizzes Passed</div>
+                            <div style="font-size: 22px; font-weight: 900; color: #10b981;" id="sd-stat-quizzes-passed">0</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 11px; color: var(--text-muted);">Average Score</div>
+                            <div style="font-size: 22px; font-weight: 900; color: #00f0ff;" id="sd-stat-avg-score">0%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+                        ✨ सभी 12 मॉड्यूल्स के क्विज़ में कम से कम 80% अंक प्राप्त करने पर आपका सर्टिफ़िकेट A+ ग्रेड के साथ जनरेट होता है।
+                    </div>
+                </div>
+
+                <!-- Card B: Digital Certificate Showcase -->
+                <div class="sd-section-card" style="margin-bottom: 0; border-color: rgba(245, 158, 11, 0.3);">
+                    <div class="sd-section-header">
+                        <h3 class="sd-section-title" style="color: #fbbf24;">
+                            <span>🏆</span> Verified Digital Certificate
+                        </h3>
+                        <span id="sd-cert-status-badge" class="auth-status-pill">⏳ Locked</span>
+                    </div>
+                    <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-bottom: 14px;" id="sd-cert-status-desc">
+                        सभी 12 मॉड्यूल्स पूरे होने पर आपका आधिकारिक सत्यापित सर्टिफ़िकेट यहाँ डाउनलोड के लिए उपलब्ध होगा।
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn-primary-glow" onclick="downloadCertificateImage()" style="font-size: 12px; padding: 8px 16px;">
+                            📥 Download PNG
+                        </button>
+                        <button class="btn-secondary" onclick="enterLearningPortal(12)" style="font-size: 12px; padding: 8px 16px;">
+                            🎓 View Certificate Arena
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 4: PYTHON SIKHO BLOG & TUTORIALS (ज्ञान केंद्र व ब्लॉग) -->
+    <!-- ========================================================================= -->
+    <div id="blog-page-view" class="view-container" style="display: none;">
+        <div class="blog-wrapper">
+            
+            <!-- Hero Banner -->
+            <div class="blog-hero-banner">
+                <button class="btn-secondary" onclick="showLandingPage()" style="position: absolute; top: 10px; left: 10px; font-size: 11px;">
+                    ← 🏠 Home
+                </button>
+                <div class="hero-tag-pill" style="margin-bottom: 14px;">
+                    <span>🐍 PYTHON SIKHO KNOWLEDGE HUB • BY ROHIT SIR</span>
+                </div>
+                <h1 class="blog-hero-title">
+                    पाइथन सीखो <span class="neon-gradient-text">ब्लॉग व ट्यूटोरियल्स</span>
+                </h1>
+                <p class="blog-hero-sub">
+                    आसान हिंदी व अंग्रेजी में Python 3, आर्टिफिशियल इंटेलिजेंस, जॉब इंटरव्यू प्रश्न-उत्तर, और करियर गाइडेंस आर्टिकल्स।
+                </p>
+
+                <!-- Search Bar -->
+                <div class="blog-search-box">
+                    <input type="text" id="blog-search-input" class="blog-search-input" placeholder="🔍 Search Python Tutorials, Interview Q&A, Topics..." oninput="handleBlogSearch(this.value)">
+                </div>
+
+                <!-- Category Chips -->
+                <div class="blog-cat-chips-bar">
+                    <button class="blog-cat-chip active" onclick="filterBlogCategory('all', this)">All Articles</button>
+                    <button class="blog-cat-chip" onclick="filterBlogCategory('Python Basics', this)">🐍 Python Basics</button>
+                    <button class="blog-cat-chip" onclick="filterBlogCategory('Interview QA', this)">🎯 Interview Q&A</button>
+                    <button class="blog-cat-chip" onclick="filterBlogCategory('Career & Roadmap', this)">🗺️ Career & Roadmap</button>
+                    <button class="blog-cat-chip" onclick="filterBlogCategory('Language Comparison', this)">⚖️ Comparisons</button>
+                    <button class="blog-cat-chip" onclick="filterBlogCategory('Local Coaching', this)">🏫 Kuchaman Classes</button>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="blog-articles-grid" id="blog-articles-container">
+                <!-- Rendered dynamically by loadBlogArticles() -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- VIEW 5: SINGLE BLOG ARTICLE READER (ब्लॉग आर्टिकल रीडर) -->
+    <!-- ========================================================================= -->
+    <div id="blog-article-view" class="view-container" style="display: none;">
+        <div class="blog-article-wrapper">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <button class="btn-secondary" onclick="showBlogPage()">
+                    ← All Articles (सभी ब्लॉग)
+                </button>
+                <button class="btn-primary-glow" onclick="enterLearningPortal()" style="font-size: 11px; padding: 6px 14px;">
+                    💻 Open Python Live Sandbox ➜
+                </button>
+            </div>
+
+            <article class="blog-reader-card">
+                
+                <div class="blog-article-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <span class="blog-card-cat" id="single-blog-category">Python Basics</span>
+                        <div style="font-size: 12px; color: var(--text-muted); display: flex; gap: 14px;">
+                            <span id="single-blog-read-time">5 min read</span>
+                            <span id="single-blog-views">👁️ 150 views</span>
+                            <span id="single-blog-date">Sept 2026</span>
+                        </div>
+                    </div>
+
+                    <h1 id="single-blog-title">Article Title</h1>
+
+                    <div class="blog-article-author-row">
+                        <img src="{{ url_for('static', filename='uploads/rohit_sir.png') }}" alt="Rohit Sir" class="blog-author-avatar">
+                        <div>
+                            <strong style="color: #fff; font-size: 14px;">Rohit Sir</strong>
+                            <div style="font-size: 11px; color: var(--text-muted);">Chief Python Mentor • Samyak Computer Classes, Kuchaman City</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Markdown Content Rendered -->
+                <div class="blog-content-body" id="single-blog-content">
+                    <!-- Populated dynamically with parsed markdown -->
+                </div>
+
+                <!-- Article Share & CTA Bar -->
+                <div class="blog-share-bar">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 13px; font-weight: 700; color: #fff;">Share Article:</span>
+                        <button class="btn-secondary" onclick="shareCurrentBlogWhatsApp()" style="border-color: #25d366; color: #25d366; font-size: 12px; padding: 6px 12px;">
+                            📲 Share on WhatsApp
+                        </button>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-primary-glow" onclick="enterLearningPortal()">
+                            🚀 Start Learning Python Free ➜
+                        </button>
+                    </div>
+                </div>
+
+            </article>
+
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 3. SLEEK GLASSMORPHIC AUTH / ONBOARDING MODAL (लॉगिन & साइनअप) -->
+    <!-- ========================================================================= -->
+    <div class="modal-backdrop" id="auth-modal" style="display: none;">
+        <div class="auth-modal-card">
+            <button class="btn-close-modal" onclick="closeAuthModal()">✖</button>
+            
+            <div class="auth-modal-header">
+                <div class="brand-logo-glow" style="width: 36px; height: 36px; font-size: 18px;">🐍</div>
+                <div>
+                    <h2 class="auth-modal-title" id="auth-modal-title">पाइथन सीखो में लॉगिन करें</h2>
+                    <p class="auth-modal-subtitle">Chief Mentor: Rohit Sir (📞 9509934266 • Kuchaman City)</p>
+                </div>
+            </div>
+
+            <!-- Dynamic OTP Flow Container -->
+            <div class="auth-modal-body">
+                
+                <!-- Phase 1: Phone Number Input -->
+                <div id="auth-phase-phone" class="auth-phase active">
+                    <label class="auth-input-label">📱 आपका 10-अंकों का मोबाइल नंबर (Mobile Number):</label>
+                    <div class="phone-input-group">
+                        <span class="country-prefix">🇮🇳 +91</span>
+                        <input type="tel" id="input-phone" class="auth-input-box" placeholder="उदा. 9509934266" maxlength="10" onkeydown="if(event.key==='Enter') sendOtp()">
+                    </div>
+                    <button class="btn-primary-glow auth-btn" onclick="sendOtp()" id="btn-send-otp">
+                        📩 Send OTP (ओटीपी प्राप्त करें) →
+                    </button>
+                    <div class="auth-help-text">
+                        ✨ नए छात्रों को लॉगिन करते ही तुरंत <strong>+100 Welcome XP</strong> मिलेंगे!
+                    </div>
+                </div>
+
+                <!-- Phase 2: OTP Verification & Onboarding Details -->
+                <div id="auth-phase-otp" class="auth-phase">
+                    <div class="otp-banner-info">
+                        <span>📩 OTP भेजा गया: </span>
+                        <strong id="display-sent-phone">+91 XXXXXXXXXX</strong>
+                        <button class="btn-text-edit" onclick="resetAuthPhase()">बदलें</button>
+                    </div>
+
+                    <!-- Real-time SMS Sent Notice -->
+                    <div class="secure-otp-status" id="secure-otp-status" style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 10px 14px; margin: 12px 0; font-size: 12px; color: #a7f3d0; line-height: 1.5;">
+                        <div style="font-weight: 800; color: #34d399; margin-bottom: 3px;">✅ OTP सफलता से भेज दिया गया है!</div>
+                        <div>कृपया अपने मोबाइल के SMS इनबॉक्स में आया 4-अंकों का गुप्त कोड नीचे दर्ज करें।</div>
+                    </div>
+
+                    <!-- Direct WhatsApp Backup Button -->
+                    <div id="auth-wa-backup-box" style="margin: 8px 0 12px; text-align: center;">
+                        <a id="btn-auth-wa-otp" href="#" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: rgba(37, 211, 102, 0.15); border: 1px solid rgba(37, 211, 102, 0.4); color: #25d366; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700;">
+                            <span>💬 SMS नहीं आया? रोहित सर से WhatsApp पर OTP पाएँ ↗</span>
+                        </a>
+                    </div>
+
+                    <label class="auth-input-label" style="margin-top: 14px;">🔢 4-अंकों का OTP दर्ज करें (Enter OTP):</label>
+                    <div class="otp-digit-inputs">
+                        <input type="text" maxlength="1" class="otp-box" id="otp-1" oninput="focusNextOtp(this, 'otp-2')">
+                        <input type="text" maxlength="1" class="otp-box" id="otp-2" oninput="focusNextOtp(this, 'otp-3')">
+                        <input type="text" maxlength="1" class="otp-box" id="otp-3" oninput="focusNextOtp(this, 'otp-4')">
+                        <input type="text" maxlength="1" class="otp-box" id="otp-4">
+                    </div>
+
+                    <!-- Student Onboarding Details (Name & City) -->
+                    <div class="onboarding-details-box" id="onboarding-fields">
+                        <label class="auth-input-label">👤 आपका पूरा नाम (Full Name):</label>
+                        <input type="text" id="input-student-name" class="auth-input-box" placeholder="उदा. राहुल शर्मा">
+
+                        <label class="auth-input-label" style="margin-top: 10px;">📍 आपका शहर / कस्बा (City / Town):</label>
+                        <input type="text" id="input-student-city" class="auth-input-box" placeholder="उदा. कुचामन सिटी" value="Kuchaman City">
+                    </div>
+
+                    <div class="otp-resend-row">
+                        <span id="otp-timer-text">Resend in <strong id="resend-countdown">30</strong>s</span>
+                        <button class="btn-text-resend" id="btn-resend-otp" onclick="resendOtp()" disabled>🔄 Resend OTP</button>
+                    </div>
+
+                    <button class="btn-primary-glow auth-btn" onclick="verifyAndRegisterStudent()" id="btn-verify-otp">
+                        🚀 Verify & Start Python Sikho (+100 XP) →
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 4. ROHIT SIR MENTOR PIN SECURITY LOCK MODAL -->
+    <!-- ========================================================================= -->
+    <div class="modal-backdrop" id="mentor-pin-modal" style="display: none;">
+        <div class="auth-modal-card" style="border-color: var(--gold-glow); box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 35px rgba(245, 158, 11, 0.35);">
+            <button class="btn-close-modal" onclick="closeMentorPinModal()">✖</button>
+            
+            <div class="auth-modal-header">
+                <div class="brand-logo-glow" style="border-color: var(--gold-glow); background: rgba(245, 158, 11, 0.15); font-size: 20px;">🔒</div>
+                <div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--gold-glow); letter-spacing: 1px;">🛡️ RESTRICTED ACCESS • CHIEF MENTOR ONLY</div>
+                    <h2 class="auth-modal-title" style="color: #fff;">रोहित सर मेंटर सिक्योरिटी गेटवे</h2>
+                </div>
+            </div>
+
+            <div class="auth-modal-body">
+                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                    यह एडमिन पैनल केवल चीफ मेंटर <strong>रोहित सर (📞 9509934266)</strong> के लिए सुरक्षित है। कृपया अपना सीक्रेट मेंटर पिन दर्ज करें:
+                </p>
+
+                <label class="auth-input-label">🔑 सीक्रेट मेंटर पिन / पासवर्ड (Master PIN):</label>
+                <div style="position: relative; margin-bottom: 12px;">
+                    <input type="password" id="input-mentor-pin" class="auth-input-box" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter') verifyMentorPin()">
+                    <button type="button" class="btn-toggle-eye" onclick="toggleMentorPinVisibility()" title="Show/Hide PIN">👁️</button>
+                </div>
+
+                <div id="mentor-pin-error" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid var(--red-glow); color: #fca5a5; padding: 8px 12px; border-radius: 8px; font-size: 11px; margin-bottom: 12px; text-align: center;">
+                    ❌ अमान्य मेंटर पिन! केवल रोहित सर ही इस पैनल को खोल सकते हैं।
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <span style="font-size: 11px; color: var(--text-muted);">Samyak Classes Official Admin Gate</span>
+                    <span style="font-size: 11px; color: var(--gold-glow);"><span class="pulse-dot" style="display:inline-block; vertical-align:middle; margin-right:4px;"></span> 256-Bit Encrypted</span>
+                </div>
+
+                <button class="btn-primary-glow auth-btn" onclick="verifyMentorPin(false)" id="btn-verify-mentor-pin" style="background: var(--gold-gradient); color: #000; margin-bottom: 8px;">
+                    📊 Unlock Mentor Dashboard (छात्र डेटा देखें) →
+                </button>
+                <button type="button" class="btn-secondary auth-btn" onclick="verifyMentorPin(true)" style="border-color: var(--cyan-glow); color: var(--cyan-glow);">
+                    👑 Enter Chief Mentor Mode (बिना OTP पूरा पोर्टल अनलॉक करें) →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 5. ROHIT SIR MENTOR ADMIN DASHBOARD MODAL (AUTHENTICATED) -->
+    <!-- ========================================================================= -->
+    <div class="modal-backdrop" id="mentor-admin-modal" style="display: none;">
+        <div class="mentor-modal-content super-admin-modal-card">
+            <div class="mentor-modal-header">
+                <div class="flex-align">
+                    <span style="font-size: 24px;">👑</span>
+                    <div>
+                        <div class="flex-align" style="gap: 8px;">
+                            <div style="font-size: 16px; font-weight: 800; color: var(--gold-glow);">Rohit Sir Mentor Super Admin Dashboard</div>
+                            <span class="auth-status-pill">🟢 AUTHENTICATED: CHIEF MENTOR</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Samyak Computer Classes, Kuchaman City • 📞 9509934266</div>
+                    </div>
+                </div>
+                <div class="flex-align" style="gap: 8px;">
+                    <button class="btn-csv-export" onclick="exportStudentsCSV()" title="Download entire enrolled students roster into Excel CSV">
+                        📥 Download Excel/CSV
+                    </button>
+                    <button class="btn-primary-glow" onclick="activateChiefMentorMode()" style="font-size: 11px; padding: 6px 12px;" title="Unlock entire learning portal with Chief Mentor master access">
+                        🎓 Open Arena (मास्टर एक्सेस)
+                    </button>
+                    <button class="btn-secondary" onclick="lockMentorAdminSession()" style="font-size: 11px; padding: 6px 12px; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">
+                        🔒 Lock & Exit
+                    </button>
+                    <button class="btn-close-modal" onclick="closeMentorAdminModal()">✖</button>
+                </div>
+            </div>
+
+            <!-- SUPER ADMIN TAB NAVIGATION BAR -->
+            <div class="admin-tabs-nav">
+                <button class="admin-tab-btn active" id="tab-btn-students" onclick="switchAdminTab('students')">
+                    👥 Enrolled Students Directory (छात्र सूची)
+                </button>
+                <button class="admin-tab-btn" id="tab-btn-notices" onclick="switchAdminTab('notices')">
+                    📢 Broadcast Notice Board (लाइव नोटिस बोर्ड)
+                </button>
+                <button class="admin-tab-btn" id="tab-btn-cms" onclick="switchAdminTab('cms')">
+                    📝 Topic Notes & Quiz CMS (नोट्स व क्विज़ एडिटर)
+                </button>
+            </div>
+
+            <div class="mentor-modal-body">
+                
+                <!-- ------------------------------------------------------------- -->
+                <!-- TAB PANE 1: STUDENTS DIRECTORY & ACTIONS -->
+                <!-- ------------------------------------------------------------- -->
+                <div id="admin-pane-students" class="admin-tab-pane active">
+                    <div class="admin-stats-bar">
+                        <div class="admin-stat-card">
+                            <span class="admin-stat-num" id="admin-total-students">0</span>
+                            <span class="admin-stat-label">Total Enrolled Students</span>
+                        </div>
+                        <div class="admin-stat-card">
+                            <span class="admin-stat-num" id="admin-avg-xp">100</span>
+                            <span class="admin-stat-label">Average XP Points</span>
+                        </div>
+                        <div class="admin-stat-card">
+                            <span class="admin-stat-num">02:00 PM</span>
+                            <span class="admin-stat-label">Daily Python Batch</span>
+                        </div>
+                    </div>
+
+                    <!-- Admin Search & Action Bar -->
+                    <div class="admin-toolbar-flex">
+                        <div style="font-weight: 800; font-size: 13px; color: #fff;">📋 Enrolled Students Master Directory</div>
+                        <div class="flex-align" style="gap: 10px;">
+                            <input type="text" id="admin-search-input" placeholder="🔍 Search student name, phone, city..." class="auth-input-box" style="max-width: 280px; padding: 7px 12px; font-size: 12px;" oninput="filterAdminStudents()">
+                            <button class="btn-secondary" onclick="loadAdminStudents()" style="font-size: 11px; padding: 7px 12px;" title="Refresh list">🔄 Refresh</button>
+                            <button class="btn-primary-glow" onclick="exportStudentsCSV()" style="font-size: 11px; padding: 7px 12px;">📥 Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-table-wrapper">
+                        <table class="admin-students-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Student Name</th>
+                                    <th>Phone Number</th>
+                                    <th>City</th>
+                                    <th>XP Points</th>
+                                    <th>Streak</th>
+                                    <th>Joined Date</th>
+                                    <th>Admin Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-students-tbody">
+                                <!-- Populated dynamically via loadAdminStudents() -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ------------------------------------------------------------- -->
+                <!-- TAB PANE 2: BROADCAST NOTICE BOARD -->
+                <!-- ------------------------------------------------------------- -->
+                <div id="admin-pane-notices" class="admin-tab-pane" style="display: none;">
+                    <div class="admin-cms-card">
+                        <div class="admin-pane-title">
+                            <span>📢</span> Create & Broadcast New Live Portal Notice
+                        </div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 14px;">
+                            यहाँ से जारी किया गया नोटिस तुरंत सभी छात्रों के पोर्टल पर सबसे ऊपर लाइव प्रदर्शित होगा। (उदा. टेस्ट घोषणा, अवकाश सूचना या विशेष निर्देश)
+                        </p>
+
+                        <div class="admin-form-grid">
+                            <div class="admin-form-field" style="grid-column: 1 / -1;">
+                                <label class="admin-form-label">📝 नोटिस संदेश (Notice Message):</label>
+                                <input type="text" id="admin-notice-input" class="auth-input-box" placeholder="उदा. कल दोपहर 2:00 बजे सभी छात्रों का Python Functions का लाइव टेस्ट होगा! 🚀">
+                            </div>
+                            <div class="admin-form-field">
+                                <label class="admin-form-label">🏷️ नोटिस का प्रकार (Notice Category):</label>
+                                <select id="admin-notice-type" class="auth-input-box">
+                                    <option value="test">📝 Test / Exam Announcement (टेस्ट सूचना)</option>
+                                    <option value="urgent">🔴 Urgent / Important Alert (अति महत्वपूर्ण)</option>
+                                    <option value="general" selected>📢 General Batch Notice (सामान्य सूचना)</option>
+                                    <option value="holiday">🎉 Holiday / Schedule Update (अवकाश / समय)</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-field flex-align" style="align-items: flex-end; padding-bottom: 2px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #fff; cursor: pointer;">
+                                    <input type="checkbox" id="admin-notice-active" checked style="width: 18px; height: 18px; accent-color: var(--cyan-glow);">
+                                    <span>तुरंत एक्टिव करें (Live Broadcast on Portal)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 14px; text-align: right;">
+                            <button class="btn-primary-glow" onclick="saveAdminAnnouncement()" style="padding: 10px 22px; font-size: 13px;">
+                                📢 Publish Live Notice (लाइव पब्लिश करें)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Past / Active Notices List -->
+                    <div style="margin-top: 20px;">
+                        <div style="font-weight: 800; font-size: 13px; color: #fff; margin-bottom: 10px;">
+                            📋 All Broadcast Notices History
+                        </div>
+                        <div class="admin-table-wrapper">
+                            <table class="admin-students-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Type</th>
+                                        <th>Notice Message</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-notices-tbody">
+                                    <!-- Populated via loadAdminAnnouncements() -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ------------------------------------------------------------- -->
+                <!-- TAB PANE 3: TOPIC NOTES & QUIZ CMS -->
+                <!-- ------------------------------------------------------------- -->
+                <div id="admin-pane-cms" class="admin-tab-pane" style="display: none;">
+                    <div class="cms-topic-selector-bar">
+                        <label style="font-weight: 800; font-size: 13px; color: var(--gold-glow);">📚 Select Topic Module to Edit:</label>
+                        <select id="admin-cms-topic-select" class="auth-input-box" style="max-width: 380px; padding: 8px 14px; font-weight: 700;" onchange="loadAdminTopicCMS(this.value)">
+                            <option value="1">Topic 1: Python Introduction (पाइथन परिचय)</option>
+                            <option value="2">Topic 2: Variables & Data Types (वेरिएबल्स और डेटा टाइप्स)</option>
+                            <option value="3">Topic 3: Operators & Expressions (ऑपरेटर्स और एक्सप्रेशन्स)</option>
+                            <option value="4">Topic 4: Conditional Statements (इफ-एल्स और निर्णय)</option>
+                            <option value="5">Topic 5: Loops & Iterations (लूप्स और पुनरावृत्ति)</option>
+                            <option value="6">Topic 6: String Manipulation (स्ट्रिंग्स और मेथड्स)</option>
+                            <option value="7">Topic 7: Lists & Mutability (लिस्ट्स और ऑपरेशन्स)</option>
+                            <option value="8">Topic 8: Tuples & Immutability (टुपल्स और अनपैकिंग)</option>
+                            <option value="9">Topic 9: Dictionaries & Sets (डिक्शनरी और सेट्स)</option>
+                            <option value="10">Topic 10: Functions & Scope (फंक्शंस और स्कोप)</option>
+                            <option value="11">Topic 11: Lambda & Built-ins (लैम्ब्डा और मैप-फ़िल्टर)</option>
+                            <option value="12">Topic 12: File Handling & Projects (फ़ाइल हैंडलिंग व प्रोजेक्ट्स)</option>
+                        </select>
+                        <button class="btn-secondary" onclick="loadAdminTopicCMS(document.getElementById('admin-cms-topic-select').value)" style="font-size: 11px; padding: 8px 14px;">🔄 Reload Topic Data</button>
+                    </div>
+
+                    <div class="admin-cms-split-grid">
+                        <!-- Sub-Section A: Topic Notes Editor -->
+                        <div class="admin-cms-card">
+                            <div class="admin-pane-title">
+                                <span>📖</span> Smart Notes Content Editor
+                            </div>
+                            <div class="admin-form-group" style="margin-bottom: 10px;">
+                                <label class="admin-form-label">Topic Title (हिंदी / English):</label>
+                                <input type="text" id="admin-cms-title" class="auth-input-box" placeholder="Topic Title">
+                            </div>
+                            <div class="admin-form-group" style="margin-bottom: 10px;">
+                                <label class="admin-form-label">Topic Subtitle / Summary:</label>
+                                <input type="text" id="admin-cms-desc" class="auth-input-box" placeholder="Short description of this topic">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Smart Notes Markdown / HTML Content:</label>
+                                <textarea id="admin-cms-notes-content" class="auth-input-box cms-textarea" placeholder="Write comprehensive notes with code examples and hindi explanations..."></textarea>
+                            </div>
+                            <div style="margin-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 11px; color: var(--text-muted);">✨ Changes reflect instantly across all student screens.</span>
+                                <button class="btn-primary-glow" onclick="saveAdminTopicNotes()" style="padding: 8px 20px; font-size: 12px;">
+                                    💾 Save Topic Notes (नोट्स सेव करें)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sub-Section B: Quiz Questions Manager -->
+                        <div class="admin-cms-card">
+                            <div class="admin-pane-title">
+                                <span>❓</span> Topic Quiz Questions Manager
+                            </div>
+
+                            <!-- List of existing quiz questions -->
+                            <div class="admin-cms-questions-list" id="admin-cms-questions-container">
+                                <div style="color: var(--cyan-glow); font-size: 12px; text-align: center; padding: 20px;">
+                                    ⏳ Loading quiz questions for selected topic...
+                                </div>
+                            </div>
+
+                            <!-- Add New Quiz Question Accordion / Form -->
+                            <div class="admin-add-question-box">
+                                <div style="font-weight: 800; font-size: 12px; color: var(--gold-glow); margin-bottom: 10px;">
+                                    ➕ Add New Quiz Question for this Topic:
+                                </div>
+                                <div class="admin-form-group" style="margin-bottom: 8px;">
+                                    <label class="admin-form-label">Question Text (प्रश्न):</label>
+                                    <input type="text" id="admin-qq-text" class="auth-input-box" placeholder="उदा. Python में floor division के लिए कौन सा ऑपरेटर प्रयोग होता है?">
+                                </div>
+                                <div class="admin-form-grid" style="grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+                                    <div>
+                                        <label class="admin-form-label">Option A:</label>
+                                        <input type="text" id="admin-qq-opt-a" class="auth-input-box" placeholder="Option A">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Option B:</label>
+                                        <input type="text" id="admin-qq-opt-b" class="auth-input-box" placeholder="Option B">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Option C:</label>
+                                        <input type="text" id="admin-qq-opt-c" class="auth-input-box" placeholder="Option C">
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Option D:</label>
+                                        <input type="text" id="admin-qq-opt-d" class="auth-input-box" placeholder="Option D">
+                                    </div>
+                                </div>
+                                <div class="admin-form-grid" style="grid-template-columns: 1fr 2fr; gap: 8px; margin-bottom: 10px;">
+                                    <div>
+                                        <label class="admin-form-label">Correct Option:</label>
+                                        <select id="admin-qq-correct" class="auth-input-box">
+                                            <option value="A">Option A</option>
+                                            <option value="B">Option B</option>
+                                            <option value="C">Option C</option>
+                                            <option value="D">Option D</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="admin-form-label">Explanation (स्पष्टीकरण):</label>
+                                        <input type="text" id="admin-qq-expl" class="auth-input-box" placeholder="उदा. // ऑपरेटर floor division करता है">
+                                    </div>
+                                </div>
+                                <button class="btn-primary-glow" onclick="addAdminQuizQuestion()" style="width: 100%; padding: 9px; font-size: 12px;">
+                                    ➕ Add Question to Topic Quiz (प्रश्न जोड़ें)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 6. AWARD BONUS XP POPUP MODAL (ROHIT SIR EXCLUSIVE) -->
+    <!-- ========================================================================= -->
+    <div class="modal-backdrop" id="award-xp-modal" style="display: none; z-index: 10000;">
+        <div class="auth-modal-card" style="border-color: var(--gold-glow); box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 35px rgba(245, 158, 11, 0.35); max-width: 440px;">
+            <button class="btn-close-modal" onclick="closeAwardXPModal()">✖</button>
+            
+            <div class="auth-modal-header">
+                <div class="brand-logo-glow" style="border-color: var(--gold-glow); background: rgba(245, 158, 11, 0.15); font-size: 20px;">⚡</div>
+                <div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--gold-glow); letter-spacing: 1px;">⚡ CHIEF MENTOR REWARD SYSTEM</div>
+                    <h2 class="auth-modal-title" style="color: #fff;">छात्र को बोनस XP प्रदान करें</h2>
+                </div>
+            </div>
+
+            <div class="auth-modal-body">
+                <input type="hidden" id="award-xp-student-id" value="0">
+                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 10px; padding: 12px; margin-bottom: 14px;">
+                    <div style="font-size: 11px; color: var(--text-muted);">Student Recipient:</div>
+                    <div style="font-size: 15px; font-weight: 800; color: #fff;" id="award-xp-student-name">Student Name</div>
+                </div>
+
+                <label class="auth-input-label">⚡ XP Points Amount (बोनस XP राशि):</label>
+                <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                    <button type="button" class="quick-chip" onclick="setAwardXPAmount(50)">+50 XP</button>
+                    <button type="button" class="quick-chip" onclick="setAwardXPAmount(100)">+100 XP</button>
+                    <button type="button" class="quick-chip" onclick="setAwardXPAmount(250)">+250 XP</button>
+                    <button type="button" class="quick-chip" onclick="setAwardXPAmount(500)">+500 XP</button>
+                </div>
+                <input type="number" id="award-xp-amount-input" class="auth-input-box" value="100" min="5" max="5000" style="margin-bottom: 12px;">
+
+                <label class="auth-input-label">📝 पुरस्कार का कारण (Reason / Note):</label>
+                <input type="text" id="award-xp-reason-input" class="auth-input-box" value="क्लास टेस्ट में उत्कृष्ट प्रदर्शन (Outstanding Performance)" style="margin-bottom: 16px;">
+
+                <button class="btn-primary-glow auth-btn" onclick="submitAwardXP()" style="background: var(--gold-gradient); color: #000; font-weight: 900;">
+                    ⚡ Award Bonus XP Immediately (बोनस दें) →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 7. VIP COURSE PAYWALL UPGRADE MODAL (₹299 Lifetime Access) -->
+    <!-- ========================================================================= -->
+    <div class="modal-backdrop" id="modal-paywall-upgrade" style="display: none; z-index: 99999;">
+        <div class="paywall-modal-card">
+            <button class="btn-close-modal" onclick="closePaywallModal()">✖</button>
+            
+            <!-- Header Ribbon -->
+            <div class="paywall-header">
+                <div class="paywall-badge-pill">🔥 70% LIMITED TIME DISCOUNT • LIFETIME FULL ACCESS</div>
+                <h2 class="paywall-title">👑 Unlock Python Sikho VIP Course</h2>
+                <p class="paywall-subtitle">चीफ मेंटर <strong>रोहित सर (सम्यक कम्प्यूटर क्लासेज, कुचामन सिटी)</strong> के मार्गदर्शन में Python 3 में महारत हासिल करें</p>
+                
+                <div class="paywall-price-tag">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value" id="paywall-price-display">299</span>
+                    <span class="price-mrp">₹999</span>
+                    <span class="price-period">एकमुश्त / लाइफटाइम एक्सेस</span>
+                </div>
+            </div>
+
+            <div class="paywall-body-grid">
+                <!-- Left Side: Course Highlights & Inclusions -->
+                <div class="paywall-perks-col">
+                    <h4 class="perks-heading">✨ VIP मेंबरशिप में आपको क्या मिलेगा:</h4>
+                    <ul class="paywall-perks-list">
+                        <li><span class="perk-icon">🟢</span> <strong>Topic 1 (Intro):</strong> 100% Free Demo Class (Included)</li>
+                        <li><span class="perk-icon">🔓</span> <strong>Topics 2 से 12:</strong> सभी 12 मॉड्यूल्स के इन-डेप्थ नोट्स व कोड</li>
+                        <li><span class="perk-icon">💻</span> <strong>100+ लाइव कोडिंग सैंडबॉक्स:</strong> हैंड्स-ऑन प्रैक्टिस चैलेंज</li>
+                        <li><span class="perk-icon">❓</span> <strong>12 टॉपिक क्विज़:</strong> इंस्टेंट स्कोर व डिटेल्ड एक्सप्लेनेशन</li>
+                        <li><span class="perk-icon">🚀</span> <strong>3 रियल-वर्ल्ड प्रोजेक्ट्स:</strong> प्रोडक्शन-ग्रेड कैपस्टोन कोड</li>
+                        <li><span class="perk-icon">🏆</span> <strong>वेरिफाइड सर्टिफ़िकेट:</strong> रोहित सर द्वारा हस्ताक्षरित डिजिटल सर्टिफ़िकेट</li>
+                        <li><span class="perk-icon">🤖</span> <strong>24/7 AI Python Tutor:</strong> ऑडियो व हिंदी-इंग्लिश में डाउट सोल्यूशन</li>
+                    </ul>
+
+                    <div class="paywall-mentor-box">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 24px;">👨‍🏫</span>
+                            <div>
+                                <div style="font-weight: 800; color: #fff; font-size: 13px;">रोहित सर (चीफ मेंटर)</div>
+                                <div style="font-size: 11px; color: var(--cyan-glow);">सम्यक कम्प्यूटर क्लासेज, कुचामन सिटी</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+                            <span>📞 सहायता: <strong>7627060647 / 9509934266</strong></span>
+                            <a href="https://api.whatsapp.com/send?phone=917627060647&text=Hello%20Rohit%20Sir,%20I%20have%20a%20question%20about%20Python%20Sikho%20VIP%20Course." target="_blank" class="btn-wa-sm">💬 WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: UPI QR Code & 12-Digit UTR Submission Form -->
+                <div class="paywall-payment-col">
+                    <!-- UPI Scan Card -->
+                    <div class="paywall-qr-card">
+                        <div class="qr-heading-badge">📱 PHONEPE / GPAY / PAYTM QR CODE</div>
+                        <div class="qr-img-wrapper">
+                            <img src="/static/uploads/payment_qr_299.png?v=8.0" alt="PhonePe UPI QR 7627060647" id="paywall-qr-img" class="paywall-qr-img">
+                        </div>
+                        
+                        <div class="upi-details-strip">
+                            <div class="upi-info-item">
+                                <span class="lbl">UPI Number:</span>
+                                <span class="val" id="paywall-upi-number">7627060647</span>
+                                <button class="btn-copy-upi" onclick="copyUpiNumber('7627060647')">📋 Copy</button>
+                            </div>
+                            <div class="upi-info-item">
+                                <span class="lbl">UPI ID:</span>
+                                <span class="val" id="paywall-upi-id">7627060647@ybl</span>
+                                <button class="btn-copy-upi" onclick="copyUpiNumber('7627060647@ybl')">📋 Copy</button>
+                            </div>
+                            <div class="upi-info-item" style="grid-column: 1 / -1; justify-content: center; font-size: 11px; color: var(--gold-glow); font-weight: 700;">
+                                👤 Payee Name: RAJU RAM (Rohit Sir)
+                            </div>
+                        </div>
+
+                        <!-- 1-Tap Mobile Pay Buttons -->
+                        <div class="mobile-pay-intents">
+                            <a href="upi://pay?pa=7627060647@ybl&pn=RAJU%20RAM&am=299&cu=INR&tn=Python%20Sikho%20VIP%20Course" class="btn-upi-app phonepe">
+                                <span>⚡ PhonePe</span>
+                            </a>
+                            <a href="upi://pay?pa=7627060647@ybl&pn=RAJU%20RAM&am=299&cu=INR&tn=Python%20Sikho%20VIP%20Course" class="btn-upi-app gpay">
+                                <span>⚡ Google Pay</span>
+                            </a>
+                            <a href="upi://pay?pa=7627060647@ybl&pn=RAJU%20RAM&am=299&cu=INR&tn=Python%20Sikho%20VIP%20Course" class="btn-upi-app paytm">
+                                <span>⚡ Paytm / Any UPI</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- UTR / Screenshot Submission Form -->
+                    <div class="paywall-utr-form">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 12px; font-weight: 800; color: var(--gold-glow);">
+                                📝 पेमेंट प्रमाण (Proof) सबमिट करें:
+                            </span>
+                            <span style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 2px 6px; border-radius: 4px; font-weight: 700;">⚡ Instant Verification</span>
+                        </div>
+
+                        <!-- Submission Mode Toggle -->
+                        <div class="paywall-mode-toggle" style="display: flex; gap: 6px; margin-bottom: 12px;">
+                            <button type="button" class="btn-pay-mode active" id="btn-pay-mode-slip" onclick="setPaySubmissionMode('slip')" style="flex: 1; padding: 6px; font-size: 11px; font-weight: 800; border-radius: 6px; cursor: pointer;">
+                                📷 Upload Screenshot
+                            </button>
+                            <button type="button" class="btn-pay-mode" id="btn-pay-mode-utr" onclick="setPaySubmissionMode('utr')" style="flex: 1; padding: 6px; font-size: 11px; font-weight: 800; border-radius: 6px; cursor: pointer;">
+                                ⌨️ Enter UTR Number
+                            </button>
+                        </div>
+
+                        <!-- Student Status Bar -->
+                        <div id="paywall-student-status-bar" style="display: none; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.25); padding: 8px 12px; border-radius: 8px; font-size: 11px; margin-bottom: 10px;">
+                            👤 छात्र: <strong id="paywall-student-name-label" style="color: var(--cyan-glow);">Student</strong> (<span id="paywall-student-phone-label" style="font-family: monospace;">-</span>)
+                        </div>
+
+                        <!-- Guest fallback inputs if not logged in -->
+                        <div id="paywall-guest-inputs-row" style="display: flex; gap: 8px; margin-bottom: 10px;">
+                            <input type="text" id="input-payment-name" class="auth-input-box" placeholder="आपका नाम (Your Name)" style="flex: 1; font-size: 12px;">
+                            <input type="tel" id="input-payment-phone" class="auth-input-box" placeholder="10-अंकों का मोबाइल नंबर" maxlength="10" style="flex: 1; font-size: 12px; font-family: monospace;">
+                        </div>
+                        
+                        <!-- Mode 1: Screenshot Upload Box -->
+                        <div id="pay-mode-slip-container">
+                            <label for="paywall-slip-file" class="slip-upload-dropzone" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.04); border-radius: 8px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s;">
+                                <span style="font-size: 26px; margin-bottom: 4px;">📷</span>
+                                <span style="font-size: 12px; font-weight: 700; color: #fff;" id="paywall-slip-label-text">Click to Select Payment Screenshot</span>
+                                <span style="font-size: 10px; color: var(--text-muted);">PhonePe, Google Pay या Paytm रसीद की फोटो</span>
+                                <input type="file" id="paywall-slip-file" accept="image/*" style="display: none;" onchange="handlePaywallSlipSelect(event)">
+                            </label>
+
+                            <div id="paywall-slip-preview-box" style="display: none; margin-top: 8px; position: relative; text-align: center;">
+                                <img id="paywall-slip-preview-img" src="" style="max-height: 110px; border-radius: 6px; border: 1px solid var(--cyan-glow); box-shadow: 0 0 10px rgba(0,240,255,0.3);">
+                                <button type="button" onclick="clearPaywallSlip()" style="position: absolute; top: 4px; right: 25%; background: #ef4444; color: #fff; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 10px; cursor: pointer;">✖</button>
+                            </div>
+
+                            <input type="text" id="input-payment-slip-utr" class="auth-input-box" placeholder="UTR / Ref No. (वैकल्पिक / Optional)" maxlength="25" style="margin-top: 8px; font-size: 11px;">
+
+                            <button class="btn-submit-utr" id="btn-submit-slip" onclick="submitCoursePaymentSlip()" style="margin-top: 10px; width: 100%;">
+                                📤 Submit Screenshot & Unlock VIP ➜
+                            </button>
+                        </div>
+
+                        <!-- Mode 2: UTR Text Input Box -->
+                        <div id="pay-mode-utr-container" style="display: none;">
+                            <div class="utr-input-group">
+                                <input type="text" id="input-payment-utr" class="auth-input-box" placeholder="12-अंकों का UPI UTR (उदा. 423589124578)" maxlength="25">
+                                <button class="btn-submit-utr" id="btn-submit-utr" onclick="submitCoursePayment()">
+                                    🚀 Verify UTR ➜
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="payment-status-message" class="payment-status-msg" style="display: none;"></div>
+
+                        <!-- 1-Click WhatsApp Proof Button Container -->
+                        <div id="paywall-wa-proof-container" style="display: none; margin-top: 10px;">
+                            <a id="paywall-wa-proof-btn" href="https://api.whatsapp.com/send?phone=917627060647&text=Hello%20Rohit%20Sir,%20I%20have%20paid%20Rs.299%20for%20Python%20Sikho%20VIP." target="_blank" class="btn-wa-proof" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 800; font-size: 12px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);">
+                                <span>📱 रोहित सर को व्हाट्सएप पर स्क्रीनशॉट भेजें ➜</span>
+                            </a>
+                        </div>
+                        
+                        <p style="font-size: 10px; color: var(--text-muted); margin-top: 8px; line-height: 1.4;">
+                            🔒 100% सुरक्षित डायरेक्ट बैंक ट्रांसफर। पेमेंट सबमिट करने पर रोहित सर द्वारा सत्यापन के तुरंत बाद आपका पूरा VIP कोर्स एक्टिव हो जाएगा।
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 5. FLOATING AI TUTOR (ROHIT SIR AI ASSISTANT - STRICT PYTHON DOMAIN) -->
+    <!-- ========================================================================= -->
+    <div class="ai-tutor-bubble" onclick="toggleAiDrawer()">
+        <span>🤖</span>
+        <span class="ai-bubble-label">Rohit Sir AI Tutor</span>
+    </div>
+
+    <div class="ai-drawer" id="ai-drawer">
+        <div class="ai-drawer-header">
+            <div class="flex-align">
+                <span>🤖</span>
+                <div>
+                    <div style="font-weight: 800; font-size: 13px; color: var(--cyan-glow);">Rohit Sir AI Coding Tutor</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">24/7 Python Doubt Solver (Strict Python Domain)</div>
+                </div>
+            </div>
+            <button onclick="toggleAiDrawer()" class="btn-close-modal">✖</button>
+        </div>
+
+        <!-- Quick Python Topic Question Chips -->
+        <div class="ai-quick-chips">
+            <button class="quick-chip" onclick="askQuickTutor('Python me 4 main data types kon se hote hai code ke sath btao')">📦 Data Types</button>
+            <button class="quick-chip" onclick="askQuickTutor('Python me // aur / operator me kya difference hai?')">🔢 Operators</button>
+            <button class="quick-chip" onclick="askQuickTutor('Python me def function aur lambda function me kya antar hai?')">🧱 Functions</button>
+            <button class="quick-chip" onclick="askQuickTutor('Mera sandbox code check karo aur sahi karo')">🔍 Check My Code</button>
+        </div>
+
+        <div class="ai-chat-body" id="ai-chat-body">
+            <div class="ai-msg bot">
+                नमस्ते! 🐍 मैं रोहित सर का समर्पित Python AI Tutor हूँ। आपको Python के किसी भी टॉपिक (Variables, Operators, Loops, Functions, Errors) में डाउट हो, मुझसे बेझिझक पूछें!
+            </div>
+        </div>
+
+        <div class="ai-chat-input-bar">
+            <input type="text" id="ai-user-query" placeholder="Ask your Python doubt in Hindi/English..." onkeydown="if(event.key==='Enter') sendAiQuery()">
+            <button onclick="sendAiQuery()" class="btn-ai-send">Ask</button>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 8. FLOATING LEAD TRIGGER & MODAL (FREE 30-PAGE HANDBOOK) -->
+    <!-- ========================================================================= -->
+    <div class="floating-lead-trigger" id="lead-floating-trigger" onclick="openLeadCheatsheetModal()" title="Free 30-Page Python Handbook by Rohit Sir">
+        <span style="font-size: 20px;">🎁</span>
+        <span class="lead-trigger-text">Free Python Handbook (PDF)</span>
+    </div>
+
+    <!-- Free Handbook Modal -->
+    <div class="modal-backdrop" id="modal-lead-cheatsheet" style="display: none; z-index: 100001;">
+        <div class="auth-modal-card" style="border-color: #f472b6; box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 35px rgba(244, 114, 182, 0.35); max-width: 480px;">
+            <button class="btn-close-modal" onclick="closeLeadCheatsheetModal()">✖</button>
+            
+            <div class="auth-modal-header">
+                <div class="brand-logo-glow" style="border-color: #f472b6; background: rgba(244, 114, 182, 0.15); font-size: 22px;">🎁</div>
+                <div>
+                    <div style="font-size: 10px; font-weight: 800; color: #f472b6; letter-spacing: 1px;">🔥 100% FREE RESOURCE • ROHIT SIR SPECIAL</div>
+                    <h2 class="auth-modal-title" style="color: #fff; font-size: 18px;">30-Page Python Master Handbook</h2>
+                </div>
+            </div>
+
+            <div class="auth-modal-body">
+                <p style="font-size: 12px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px;">
+                    चीफ मेंटर <strong>रोहित सर (सम्यक क्लासेज, कुचामन सिटी)</strong> द्वारा तैयार की गई सम्पूर्ण Python 3 फॉर्मूला व सिंटैक्स चीटशीट अभी सीधे डाउनलोड करें:
+                </p>
+
+                <div style="background: rgba(244, 114, 182, 0.08); border: 1px solid rgba(244, 114, 182, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 11px; color: #fbcfe8;">
+                    ✅ सभी 12 चैप्टर्स के शॉर्टकट फॉर्मूले<br>
+                    ✅ 50+ रियल इंटरव्यू प्रश्न-उत्तर<br>
+                    ✅ 100% हैंड्स-ऑन हिंदी नोट्स
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label class="auth-input-label">👤 आपका पूरा नाम (Full Name):</label>
+                    <input type="text" id="lead-input-name" class="auth-input-box" placeholder="उदा. राहुल शर्मा">
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label class="auth-input-label">📱 आपका WhatsApp मोबाइल नंबर:</label>
+                    <div class="phone-input-group">
+                        <span class="country-prefix">🇮🇳 +91</span>
+                        <input type="tel" id="lead-input-phone" class="phone-number-input" placeholder="10-digit mobile" maxlength="10">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                    <label class="auth-input-label">📍 आपका शहर / कस्बा (City):</label>
+                    <input type="text" id="lead-input-city" class="auth-input-box" value="Kuchaman City" placeholder="e.g. Kuchaman City / Jaipur / Nagaur">
+                </div>
+
+                <div id="lead-status-msg" style="display: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; margin-bottom: 12px;"></div>
+
+                <button class="btn-primary-glow auth-btn" onclick="submitLeadCapture()" id="btn-submit-lead" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); color: #fff; font-weight: 800;">
+                    🚀 Download Free Handbook Now (PDF) 📥
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 9. PWA FLOATING INSTALL PROMPT (NATIVE MOBILE APP FEEL) -->
+    <!-- ========================================================================= -->
+    <div id="pwa-floating-banner" class="pwa-floating-banner" style="display: none;">
+        <div class="pwa-banner-content">
+            <div class="pwa-icon">🐍</div>
+            <div class="pwa-text">
+                <strong style="color: #fff; font-size: 12px;">Install Python Sikho App</strong>
+                <p style="margin: 0; font-size: 10px; color: var(--text-muted);">बिना ब्राउज़र के 1-क्लिक में मोबाइल पर खोलें</p>
+            </div>
+            <button class="btn-primary-glow" onclick="triggerPwaInstall()" style="font-size: 11px; padding: 6px 12px;">
+                📲 Install
+            </button>
+            <button class="pwa-close-btn" onclick="dismissPwaBanner()">✖</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=12.0"></script>
+</body>
+</html>

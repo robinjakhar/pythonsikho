@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Python 3 Master Handbook by Rohit Sir (Samyak Classes Kuchaman City)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; padding: 40px; line-height: 1.6; }
+        .handbook-card { max-width: 850px; margin: 0 auto; background: #1e293b; padding: 40px; border-radius: 16px; border: 2px solid #00f0ff; box-shadow: 0 0 30px rgba(0,240,255,0.2); }
+        h1 { color: #00f0ff; border-bottom: 2px solid #38bdf8; padding-bottom: 12px; }
+        h2 { color: #f59e0b; margin-top: 28px; }
+        .mentor-badge { background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 6px 14px; border-radius: 20px; font-weight: 800; display: inline-block; margin-bottom: 20px; }
+        pre { background: #0a0e1a; padding: 14px; border-radius: 8px; border-left: 4px solid #10b981; color: #34d399; font-family: 'Courier New', Courier, monospace; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        th, td { border: 1px solid #334155; padding: 10px; text-align: left; }
+        th { background: #0f172a; color: #38bdf8; }
+        .footer { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; color: #94a3b8; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="handbook-card">
+        <span class="mentor-badge">👑 SAMYAK COMPUTER CLASSES • KUCHAMAN CITY</span>
+        <h1>🐍 Complete Python 3 Quick Formula Handbook</h1>
+        <p><strong>Chief Mentor:</strong> Rohit Sir | <strong>Helpline:</strong> 9509934266 | <strong>Batch:</strong> Daily 02:00 PM</p>
+        
+        <h2>1. Variables & Data Types</h2>
+        <pre># Python Dynamic Typing
+name = "Rohit Sir"       # str
+age = 25                # int
+fees = 299.00           # float
+is_vip = True           # bool</pre>
+
+        <h2>2. Operators Quick Reference</h2>
+        <table>
+            <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+            <tr><td><code>//</code></td><td>Floor Division</td><td><code>7 // 2</code></td><td><code>3</code></td></tr>
+            <tr><td><code>**</code></td><td>Exponent (Power)</td><td><code>2 ** 3</code></td><td><code>8</code></td></tr>
+            <tr><td><code>%</code></td><td>Modulus (Remainder)</td><td><code>7 % 2</code></td><td><code>1</code></td></tr>
+            <tr><td><code>in</code></td><td>Membership</td><td><code>'py' in 'python'</code></td><td><code>True</code></td></tr>
+        </table>
+
+        <h2>3. Lists & Dictionaries</h2>
+        <pre># List Operations
+skills = ["Python", "Flask", "Django", "SQL"]
+skills.append("AI")
+print(skills[0:2]) # ['Python', 'Flask']
+
+# Dictionary Operations
+student = {"name": "Aman", "city": "Kuchaman City", "xp": 850}
+print(student.get("city")) # 'Kuchaman City'</pre>
+
+        <h2>4. Functions & Lambda</h2>
+        <pre># Def Function
+def greet(student_name):
+    return f"नमस्ते {student_name}! Welcome to Python Sikho."
+
+# Lambda One-Liner
+square = lambda x: x * x
+print(square(9)) # 81</pre>
+
+        <h2>5. 12-Module Full Practice Portal</h2>
+        <p>लाइव कोडिंग, क्विज़ और आधिकारिक सर्टिफ़िकेट के लिए अभी <strong>Python Sikho</strong> पोर्टल पर लॉगिन करें!</p>
+        
+        <div class="footer">
+            © 2026 Python Sikho Academy by Rohit Sir. All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>
